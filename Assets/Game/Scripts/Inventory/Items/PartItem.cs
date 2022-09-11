@@ -79,7 +79,7 @@ namespace MoreMountains.TopDownEngine
                 {
 					// CHANGE TRIGGERMODE AND PROJECTILE TO UNCHANGED(?) or NoProjectile
 					statManager.AdjustStats(-maxDamage, -minDamage, -knockbackOnTarget, -bulletSpeed, -bulletAcceleration,
-					-bulletLifeTime, projectile, triggerMode, projectilesPerShot, -bulletSpread, -fireRate, -magazineSize, -recoilForce);
+					-bulletLifeTime, projectile, triggerMode, -projectilesPerShot, -bulletSpread, -fireRate, -magazineSize, -recoilForce);
 				}
 				
             }
