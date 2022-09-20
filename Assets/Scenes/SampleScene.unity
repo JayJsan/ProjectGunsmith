@@ -738,7 +738,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 9
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.20392157}
   m_FlipX: 0
@@ -1461,15 +1461,17 @@ MonoBehaviour:
   entityTransform: {fileID: 901995823}
   bulletPrefab: {fileID: 3448145220456847306, guid: fd099e66b3b01de4dba5421e4a16de57, type: 3}
   AmmoText: {fileID: 0}
-  bulletForce: 5
+  bulletForce: 7
   spreadAngle: 0.179
   damage: 25
   range: 10
   fireRate: 0.1
-  maxAmmo: 133
-  currentAmmo: 132
+  maxAmmo: 16
+  currentAmmo: 16
+  reloadTime: 1
   isAuto: 1
   enableShoot: 0
+  isReloading: 0
 --- !u!50 &885167877
 Rigidbody2D:
   serializedVersion: 4
@@ -1504,6 +1506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
+  setMoveSpeed: 6
 --- !u!1 &893489096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,7 +1696,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 1407751638, guid: 30757a577e6278147926dee7e5d540aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2342,7 +2345,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5da8e1c266553ee41923e171b55d0c52, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     #region Variables
     public float moveSpeed = 3f;
+    public float setMoveSpeed = 3f;
     private float moveX;
     private float moveY;
     private Vector2 moveDirection;
@@ -38,6 +39,14 @@ public class PlayerMovement : MonoBehaviour
         moveY = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(moveX, moveY).normalized;
+        if (!(moveX == 0) && !(moveY == 0))
+        {
+            moveSpeed = setMoveSpeed * (1 / Mathf.Sqrt(2));
+        }
+        else
+        {
+            moveSpeed = setMoveSpeed;
+        }
     }
 
     private void Move()

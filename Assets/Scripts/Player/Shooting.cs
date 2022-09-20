@@ -35,23 +35,31 @@ public class Shooting : MonoBehaviour
     public int maxAmmo = 8;
     public int currentAmmo = 8; 
 
+    // Reload Time
+    public float reloadTime = 1f;
+
     // Determines if weapon is semi-auto or automatic
     public bool isAuto = false;
     #endregion
 
+    #region Variables
     public bool enableShoot;
+    public bool isReloading = false;
+    #endregion
 
     private void Start()
     {
+        enableShoot = true;
+        isReloading = false;
         entityTransform = GetComponent<Transform>();
         AmmoText = GameObject.Find("Canvas/AmmoDisplay/AmmoText");
-        HandleAmmoText();
-        enableShoot = true;
+        HandleAmmoText(isReloading);
     }
 
     // Update is called once per frame
     void Update()
     {
+        HandleReload();
         if (enableShoot)
         {
             HandleInputs();
@@ -112,15 +120,53 @@ public class Shooting : MonoBehaviour
             {
                 Shoot();
                 currentAmmo--;
-                HandleAmmoText();
+                HandleAmmoText(isReloading);
             }
             lastShootTime = Time.time;
         }
     }
 
-    void HandleAmmoText()
+    void HandleAmmoText(bool isReloading)
     {
         TextMeshProUGUI TMPComp = AmmoText.GetComponent<TextMeshProUGUI>();
-        TMPComp.text = currentAmmo.ToString() + "/" + maxAmmo.ToString();
+        if (isReloading)
+        {
+            TMPComp.text = "Reloading";
+        } else
+        {
+            TMPComp.text = currentAmmo.ToString() + "/" + maxAmmo.ToString();
+        }
+
+    }
+
+    void HandleReload()
+    {
+        if ((Input.GetKeyDown(KeyCode.R)) || (currentAmmo <= 0))
+        {
+            if (currentAmmo == maxAmmo)
+            {
+                TextMeshProUGUI TMPComp = AmmoText.GetComponent<TextMeshProUGUI>();
+                TMPComp.text = "Already full!";
+                return;
+            }
+            if (!isReloading)
+            {
+                StartCoroutine(Reload());
+            } 
+        }
+    }
+
+    IEnumerator Reload()
+    {
+        isReloading = true;
+        enableShoot = false;
+        Debug.Log("Is Reloading...");
+        HandleAmmoText(isReloading);
+        yield return new WaitForSeconds(reloadTime);
+        Debug.Log("Reloaded!");
+        currentAmmo = maxAmmo;
+        enableShoot = true;
+        isReloading = false;
+        HandleAmmoText(isReloading);
     }
 }
