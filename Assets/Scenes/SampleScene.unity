@@ -405,6 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dz: {fileID: 0}
+  partType: 
 --- !u!1 &162972726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1462,12 +1463,12 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3448145220456847306, guid: fd099e66b3b01de4dba5421e4a16de57, type: 3}
   AmmoText: {fileID: 0}
   bulletForce: 7
-  spreadAngle: 0.179
+  spreadAngle: 0
   damage: 25
   range: 10
-  fireRate: 0.1
-  maxAmmo: 16
-  currentAmmo: 16
+  fireRate: 2
+  maxAmmo: 250
+  currentAmmo: 250
   reloadTime: 1
   isAuto: 1
   enableShoot: 0
@@ -1865,6 +1866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dz: {fileID: 0}
+  partType: 
 --- !u!1 &1083047823
 GameObject:
   m_ObjectHideFlags: 0
@@ -2112,6 +2114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dz: {fileID: 0}
+  partType: 
 --- !u!1 &1426387008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2404,6 +2407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dz: {fileID: 0}
+  partType: 
 --- !u!61 &1479323809
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2607,6 +2611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dz: {fileID: 0}
+  partType: 
 --- !u!1 &1491055168
 GameObject:
   m_ObjectHideFlags: 0
@@ -4761,3 +4766,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dz: {fileID: 0}
+  partType: 
