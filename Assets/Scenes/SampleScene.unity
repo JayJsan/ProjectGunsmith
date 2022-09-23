@@ -257,6 +257,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 52195980}
+  - component: {fileID: 52195982}
+  - component: {fileID: 52195981}
   m_Layer: 0
   m_Name: StockHolder
   m_TagString: Untagged
@@ -280,6 +282,52 @@ Transform:
   m_Father: {fileID: 1491055169}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &52195981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52195979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c2fc9fba04ca14bb0363205d8316e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dz: {fileID: 0}
+  barrelZone: {fileID: 0}
+  magazineZone: {fileID: 0}
+  triggerZone: {fileID: 0}
+  sightZone: {fileID: 0}
+  stockZone: {fileID: 0}
+  specialZone: {fileID: 0}
+  partType: 0
+--- !u!61 &52195982
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52195979}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &86273637
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +453,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dz: {fileID: 0}
-  partType: 
+  barrelZone: {fileID: 0}
+  magazineZone: {fileID: 0}
+  triggerZone: {fileID: 0}
+  sightZone: {fileID: 0}
+  stockZone: {fileID: 0}
+  specialZone: {fileID: 0}
+  partType: 0
 --- !u!1 &162972726
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoveringOver: 0
-  holderName: 
+  zoneType: 0
 --- !u!61 &450790480
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1385,6 +1439,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 778701180}
+  - component: {fileID: 778701182}
+  - component: {fileID: 778701181}
   m_Layer: 0
   m_Name: SpecialHolder
   m_TagString: Untagged
@@ -1408,6 +1464,52 @@ Transform:
   m_Father: {fileID: 1491055169}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &778701181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778701179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c2fc9fba04ca14bb0363205d8316e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dz: {fileID: 0}
+  barrelZone: {fileID: 0}
+  magazineZone: {fileID: 0}
+  triggerZone: {fileID: 0}
+  sightZone: {fileID: 0}
+  stockZone: {fileID: 0}
+  specialZone: {fileID: 0}
+  partType: 0
+--- !u!61 &778701182
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778701179}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &885167870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,10 +1565,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3448145220456847306, guid: fd099e66b3b01de4dba5421e4a16de57, type: 3}
   AmmoText: {fileID: 0}
   bulletForce: 7
-  spreadAngle: 0
+  spreadAngle: 0.451
   damage: 25
   range: 10
-  fireRate: 2
+  fireRate: 0.22
   maxAmmo: 250
   currentAmmo: 250
   reloadTime: 1
@@ -1718,6 +1820,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 925989239}
+  - component: {fileID: 925989241}
+  - component: {fileID: 925989240}
   m_Layer: 0
   m_Name: SightHolder
   m_TagString: Untagged
@@ -1741,6 +1845,52 @@ Transform:
   m_Father: {fileID: 1491055169}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &925989240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925989238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c2fc9fba04ca14bb0363205d8316e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dz: {fileID: 0}
+  barrelZone: {fileID: 0}
+  magazineZone: {fileID: 0}
+  triggerZone: {fileID: 0}
+  sightZone: {fileID: 0}
+  stockZone: {fileID: 0}
+  specialZone: {fileID: 0}
+  partType: 0
+--- !u!61 &925989241
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925989238}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &942555859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,7 +2016,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dz: {fileID: 0}
-  partType: 
+  barrelZone: {fileID: 0}
+  magazineZone: {fileID: 0}
+  triggerZone: {fileID: 0}
+  sightZone: {fileID: 0}
+  stockZone: {fileID: 0}
+  specialZone: {fileID: 0}
+  partType: 0
 --- !u!1 &1083047823
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,7 +2270,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dz: {fileID: 0}
-  partType: 
+  barrelZone: {fileID: 0}
+  magazineZone: {fileID: 0}
+  triggerZone: {fileID: 0}
+  sightZone: {fileID: 0}
+  stockZone: {fileID: 0}
+  specialZone: {fileID: 0}
+  partType: 0
 --- !u!1 &1426387008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2126,7 +2288,7 @@ GameObject:
   - component: {fileID: 1426387010}
   - component: {fileID: 1426387009}
   m_Layer: 0
-  m_Name: CM vcam1
+  m_Name: CMvcam1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2407,7 +2569,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dz: {fileID: 0}
-  partType: 
+  barrelZone: {fileID: 0}
+  magazineZone: {fileID: 0}
+  triggerZone: {fileID: 0}
+  sightZone: {fileID: 0}
+  stockZone: {fileID: 0}
+  specialZone: {fileID: 0}
+  partType: 0
 --- !u!61 &1479323809
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2596,7 +2764,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 0.6875}
+  m_Size: {x: 2.99, y: 0.7}
   m_EdgeRadius: 0
 --- !u!114 &1482237963
 MonoBehaviour:
@@ -2611,7 +2779,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dz: {fileID: 0}
-  partType: 
+  barrelZone: {fileID: 0}
+  magazineZone: {fileID: 0}
+  triggerZone: {fileID: 0}
+  sightZone: {fileID: 0}
+  stockZone: {fileID: 0}
+  specialZone: {fileID: 0}
+  partType: 0
 --- !u!1 &1491055168
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,6 +2900,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1693091877}
+  - component: {fileID: 1693091879}
+  - component: {fileID: 1693091878}
   m_Layer: 0
   m_Name: TriggerHolder
   m_TagString: Untagged
@@ -2749,6 +2925,52 @@ Transform:
   m_Father: {fileID: 1491055169}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1693091878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693091876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c2fc9fba04ca14bb0363205d8316e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dz: {fileID: 0}
+  barrelZone: {fileID: 0}
+  magazineZone: {fileID: 0}
+  triggerZone: {fileID: 0}
+  sightZone: {fileID: 0}
+  stockZone: {fileID: 0}
+  specialZone: {fileID: 0}
+  partType: 0
+--- !u!61 &1693091879
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693091876}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1707920480
 GameObject:
   m_ObjectHideFlags: 0
@@ -2758,6 +2980,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1707920481}
+  - component: {fileID: 1707920483}
+  - component: {fileID: 1707920482}
   m_Layer: 0
   m_Name: MagazineHolder
   m_TagString: Untagged
@@ -2781,6 +3005,52 @@ Transform:
   m_Father: {fileID: 1491055169}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1707920482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707920480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c2fc9fba04ca14bb0363205d8316e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dz: {fileID: 0}
+  barrelZone: {fileID: 0}
+  magazineZone: {fileID: 0}
+  triggerZone: {fileID: 0}
+  sightZone: {fileID: 0}
+  stockZone: {fileID: 0}
+  specialZone: {fileID: 0}
+  partType: 0
+--- !u!61 &1707920483
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707920480}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1757552768
 GameObject:
   m_ObjectHideFlags: 0
@@ -2808,7 +3078,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1757552768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.916, y: 0.531, z: 0}
+  m_LocalPosition: {x: 0.916, y: 0.531, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2881,7 +3151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoveringOver: 0
-  holderName: 
+  zoneType: 0
 --- !u!61 &1757552772
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2895,7 +3165,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.001298964, y: -0.040177345}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2906,7 +3176,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 0.6875}
+  m_Size: {x: 2.5835075, y: 0.4674487}
   m_EdgeRadius: 0
 --- !u!1 &1988437418
 GameObject:
@@ -2934,7 +3204,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988437418}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4766,4 +5036,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dz: {fileID: 0}
-  partType: 
+  barrelZone: {fileID: 0}
+  magazineZone: {fileID: 0}
+  triggerZone: {fileID: 0}
+  sightZone: {fileID: 0}
+  stockZone: {fileID: 0}
+  specialZone: {fileID: 0}
+  partType: 0
