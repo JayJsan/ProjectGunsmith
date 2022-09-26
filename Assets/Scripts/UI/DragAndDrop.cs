@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
 {
-    public enum partTypes { Barrel, Magazine, Trigger, Sight, Stock, Special}
+    public enum partTypes { Barrel, Magazine, Trigger, Sight, Stock, Special, Dropzone}
     private bool isDragging;
+    private bool isTouching;
+    public bool isLocked;
+
+    public GameObject[] dropZones;
+    public BoxCollider2D gunPartCollider;
 
     [SerializeField]
     private DropZone dz;
     private Shooting playerShooting;
+
+    public string debug;
 
     #region DROP ZONES
     public DropZone barrelZone;
@@ -21,20 +28,13 @@ public class DragAndDrop : MonoBehaviour
     #endregion
 
     public partTypes partType;
+    
     private void Start()
     {
         #region DROP ZONE GET COMPONENT
-        barrelZone = GameObject.Find("CMvcam1/WeaponHolder/BarrelHolder").GetComponent<DropZone>();
-        magazineZone = GameObject.Find("CMvcam1/WeaponHolder/MagazineHolder").GetComponent<DropZone>();
-        triggerZone = GameObject.Find("CMvcam1/WeaponHolder/TriggerHolder").GetComponent<DropZone>();
-        sightZone = GameObject.Find("CMvcam1/WeaponHolder/SightHolder").GetComponent<DropZone>();
-        stockZone = GameObject.Find("CMvcam1/WeaponHolder/StockHolder").GetComponent<DropZone>();
-        specialZone = GameObject.Find("CMvcam1/WeaponHolder/SpecialHolder").GetComponent<DropZone>();
+        dropZones = GameObject.FindGameObjectsWithTag("Holder");
+        gunPartCollider = GetComponent<BoxCollider2D>();
 
-        #endregion
-
-        dz = GameObject.FindWithTag("DropZone").GetComponent<DropZone>();
-        playerShooting = GameObject.Find("Player").GetComponent<Shooting>();
         foreach (DragAndDrop.partTypes partType in System.Enum.GetValues(typeof(DragAndDrop.partTypes)))
         {
             if (this.gameObject.name.Contains(partType.ToString()))
@@ -42,9 +42,47 @@ public class DragAndDrop : MonoBehaviour
                 this.partType = partType;
             }
         }
+        /*
+        foreach (GameObject holder in dropZones)
+        {
+            DropZone dzComp = holder.GetComponent<DropZone>();
+
+            switch (dzComp.zoneType)
+            {
+                case partTypes.Barrel:
+                    barrelZone = holder.GetComponent<DropZone>();
+                    break;
+                case partTypes.Magazine:
+                    magazineZone = holder.GetComponent<DropZone>();
+                    break;
+                case partTypes.Trigger:
+                    triggerZone = holder.GetComponent<DropZone>();
+                    break;
+                case partTypes.Sight:
+                    sightZone = holder.GetComponent<DropZone>();
+                    break;
+                case partTypes.Stock:
+                    stockZone = holder.GetComponent<DropZone>();
+                    break;
+                case partTypes.Special:
+                    specialZone = holder.GetComponent<DropZone>();
+                    break;
+            }
+        }
+        */
+
+        barrelZone = GameObject.Find("CMvcam1/WeaponHolder/BarrelHolder").GetComponent<DropZone>();
+        magazineZone = GameObject.Find("CMvcam1/WeaponHolder/MagazineHolder").GetComponent<DropZone>();
+        triggerZone = GameObject.Find("CMvcam1/WeaponHolder/TriggerHolder").GetComponent<DropZone>();
+        sightZone = GameObject.Find("CMvcam1/WeaponHolder/SightHolder").GetComponent<DropZone>();
+        stockZone = GameObject.Find("CMvcam1/WeaponHolder/StockHolder").GetComponent<DropZone>();
+        specialZone = GameObject.Find("CMvcam1/WeaponHolder/SpecialHolder").GetComponent<DropZone>();
+        #endregion
+
+        dz = GameObject.FindWithTag("DropZone").GetComponent<DropZone>();
+        playerShooting = GameObject.Find("Player").GetComponent<Shooting>();
         playerShooting.enableShoot = true;
     }
-
 
     public void OnMouseDown()
     {
@@ -58,17 +96,21 @@ public class DragAndDrop : MonoBehaviour
         isDragging = false;
         dz.GetComponent<SpriteRenderer>().enabled = false;
         playerShooting.enableShoot = true;
-        // If player is hovering over drop zone, remove gunparts ability to return to gun holder and drop
-        /* locks sprite
-        if (!dz.hoveringOver)
+        if (!isTouching)
         {
             transform.localPosition = Vector3.zero;
         }
+        CheckGunTypeAndCollisions();
+    }
 
-        */
-        CheckGunType();
+    public void OnMouseOver()
+    {
+        
+    }
 
-
+    public void OnMouseExit()
+    {
+        
     }
 
     // Update is called once per frame
@@ -80,47 +122,64 @@ public class DragAndDrop : MonoBehaviour
             transform.Translate(mousePosition);
         }
     }
+    
 
-    void CheckGunType()
+    void CheckGunTypeAndCollisions()
     {
         // Check what type of drop zone gun part is hovering over.
         // If drop zone type == gun part type, lock position to respective drop zone
         switch (partType)
         {
             case partTypes.Barrel:
-                if (barrelZone.hoveringOver)
+                if (gunPartCollider.IsTouching(barrelZone.dropZoneCollider))
                 {
                     transform.localPosition = Vector3.zero;
+                    isTouching = true;
                 }
                 break;
             case partTypes.Magazine:
-                if (magazineZone.hoveringOver)
+                if (gunPartCollider.IsTouching(magazineZone.dropZoneCollider))
                 {
                     transform.localPosition = Vector3.zero;
+                    isTouching = true;
                 }
                 break;
             case partTypes.Sight:
-                if (sightZone.hoveringOver)
+                if (gunPartCollider.IsTouching(sightZone.dropZoneCollider))
                 {
                     transform.localPosition = Vector3.zero;
+                    isTouching = true;
                 }
                 break;
             case partTypes.Special:
-                if (specialZone.hoveringOver)
+                if (gunPartCollider.IsTouching(specialZone.dropZoneCollider))
                 {
                     transform.localPosition = Vector3.zero;
+                    isTouching = true;
                 }
                 break;
             case partTypes.Stock:
-                if (stockZone.hoveringOver)
+                if (gunPartCollider.IsTouching(stockZone.dropZoneCollider))
                 {
                     transform.localPosition = Vector3.zero;
+                    isTouching = true;
                 }
                 break;
             case partTypes.Trigger:
-                if (triggerZone.hoveringOver)
+                if (gunPartCollider.IsTouching(triggerZone.dropZoneCollider))
                 {
-                    transform.localPosition = Vector3.zero; 
+                    transform.localPosition = Vector3.zero;
+                    isTouching = true;
+                }
+                break;
+            default:
+                if (gunPartCollider.IsTouching(dz.dropZoneCollider))
+                {
+                    
+                    isTouching = true;
+                } else
+                {
+                    isTouching = false;
                 }
                 break;
         }

@@ -9,6 +9,7 @@ TagManager:
   - GunUI
   - DropZone
   - Shootable
+  - Holder
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
-  - 
+  - Holder
+  - GunUI
   - 
   - 
   - 
