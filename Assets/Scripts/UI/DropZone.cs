@@ -43,7 +43,7 @@ public class DropZone : MonoBehaviour
         DragAndDrop dragAndDrop = OccupyingGunPart.GetComponent<DragAndDrop>();
         if (dragAndDrop != null)
         {
-            dragAndDrop.
+            //dragAndDrop. 
         }
     }
 }
