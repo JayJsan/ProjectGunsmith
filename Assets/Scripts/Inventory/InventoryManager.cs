@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -14,51 +17,80 @@ public class InventoryManager : MonoBehaviour
     public List<PartItemData> equippedSpecials = new List<PartItemData>();
     #endregion
 
-    public bool gunPartChange = false;
+    #region UI
+    private TextMeshProUGUI partsUI;
+    private TextMeshProUGUI statsUI;
+    private Shooting shootManager;
+    private GameObject menu;
+    #endregion
 
+    private bool gunPartChange = false;
+    private bool inventoryOpen = false;
+    
     private void Start()
     {
-        GetComponent<Shooting>().ResetStats();
+        partsUI = GameObject.Find("Canvas/Menu/PartDisplay/Parts").GetComponent<TextMeshProUGUI>();
+        statsUI = GameObject.Find("Canvas/Menu/StatDisplay/Stats").GetComponent<TextMeshProUGUI>();
+        menu = GameObject.Find("Canvas/Menu");
+        shootManager = GetComponent<Shooting>();
+
+        shootManager.ResetStats();
         UpdateStats();
+        CloseInventory();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (inventoryOpen)
+            {
+                CloseInventory();
+            } else
+            {
+                UpdateStatsUI();
+                OpenInventory();
+            }
+        }
         if (gunPartChange)
         {
             gunPartChange = false;
             GetComponent<Shooting>().ResetStats();
             UpdateStats();
+            UpdateStatsUI();
         }
     }
 
-    public void SwapPart(PartItemData newGunPart)
+    #region Gun Part Methods
+
+    public void SwapPart(PartItemData newGunPart, Transform gunPartPosition)
     {
         switch (newGunPart.partType)
         {
             case (PartItemData.GunPartType.Barrel):
-                DropPart(equippedBarrel);
+                DropPart(equippedBarrel, gunPartPosition);
                 equippedBarrel = newGunPart;
                 gunPartChange = true;
                 break;
             case (PartItemData.GunPartType.Trigger):
-                DropPart(equippedTrigger);
+                DropPart(equippedTrigger, gunPartPosition);
                 equippedTrigger = newGunPart;
                 gunPartChange = true;
                 break;
             case (PartItemData.GunPartType.Magazine):
-                DropPart(equippedMagazine);
+                DropPart(equippedMagazine, gunPartPosition);
                 equippedMagazine = newGunPart;
                 gunPartChange = true;
                 break;
             case (PartItemData.GunPartType.Stock):
-                DropPart(equippedStock);
+                DropPart(equippedStock, gunPartPosition);
                 equippedStock = newGunPart;
                 gunPartChange = true;
                 break;
             case (PartItemData.GunPartType.Sight):
-                DropPart(equippedSight);
+                DropPart(equippedSight, gunPartPosition);
                 equippedSight = newGunPart;
                 gunPartChange = true;
                 break;
@@ -69,9 +101,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    void DropPart(PartItemData newGunPart)
+    void DropPart(PartItemData newGunPart, Transform gunPartPosition)
     {
-        Instantiate(newGunPart.prefab, GetComponent<Transform>().position, GetComponent<Transform>().rotation);
+        Instantiate(newGunPart.prefab, gunPartPosition.position, gunPartPosition.rotation);
     }
 
     void UpdateStats()
@@ -116,10 +148,11 @@ public class InventoryManager : MonoBehaviour
 
     void UpdateMagazine(Shooting s)
     {
-        // Magazine affect max ammo, damage, range
+        // Magazine affect max ammo, damage, range, reload time
         s.ChangeMaxAmmo(equippedMagazine.maxAmmo);
         s.ChangeDamage(equippedMagazine.damage);
         s.ChangeRange(equippedMagazine.range);
+        s.ChangeReloadTime(equippedMagazine.reloadTime);
     }
 
     void UpdateStock(Shooting s)
@@ -148,6 +181,66 @@ public class InventoryManager : MonoBehaviour
             s.ChangeSpeed(equippedSpecial.bulletForce);
             s.ChangeSpreadAngle(equippedSpecial.accuracyMultiplier);
         }
+    }
+    #endregion
+
+    #endregion
+
+    #region UI 
+
+    void UpdateStatsUI()
+    {
+        partsUI.text = string.Format("Barrel: {0}\r\n" +
+            "Trigger: {1}\r\n" +
+            "Magazine: {2}\r\n" +
+            "Stock: {3}\r\n" +
+            "Sight {4}\r\n" +
+            "Specials: n/a\r\n",
+            equippedBarrel.displayName, 
+            equippedTrigger.displayName,
+            equippedMagazine.displayName,
+            equippedStock.displayName,
+            equippedSight.displayName);
+
+        string triggerType;
+
+        float convertedSpreadAngle = Mathf.Abs(shootManager.spreadAngle - 1) * 100;
+        if (shootManager.isAuto)
+        {
+            triggerType = "Auto";
+        } else
+        {
+            triggerType = "Semi-Auto";
+        }
+        statsUI.text = string.Format("Bullet Speed: {0}\r\n" +
+            "Spread: {1}\r\n" +
+            "Damage: {2}\r\n" +
+            "Range: {3}\r\n" +
+            "Bullets per second: {4}\r\n" +
+            "Max Ammo: {5}\r\n" +
+            "Bullets per shot:  {6}\r\n" +
+            "Trigger Type: {7}",
+            shootManager.bulletForce,
+            convertedSpreadAngle,
+            shootManager.damage,
+            shootManager.range,
+            shootManager.currentBulletsPerSecond,
+            shootManager.maxAmmo,
+            shootManager.numberOfBullets,
+            triggerType);
+    }
+    void OpenInventory()
+    {
+        inventoryOpen = true;
+        menu.SetActive(true);
+        menu.SetActive(true);
+    }
+
+    void CloseInventory()
+    {
+        inventoryOpen = false;
+        menu.SetActive(false);
+        menu.SetActive(false);
     }
     #endregion
 }

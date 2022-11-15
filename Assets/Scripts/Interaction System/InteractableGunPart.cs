@@ -20,7 +20,7 @@ public class InteractableGunPart : InteractableObject
     {
         // Swap new part with old part
         InventoryManager inventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
-        inventoryManager.SwapPart(gunPartData);
+        inventoryManager.SwapPart(gunPartData, GetComponent<Transform>());
         // Destroy new part prefab in worldspace
         Destroy(this.gameObject);
     }

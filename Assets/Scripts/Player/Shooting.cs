@@ -45,7 +45,7 @@ public class Shooting : MonoBehaviour
     private float defaultBulletsPerSecond = 1f;
     [Range(0f, 2f)]
     public float fireRate = 1f;
-    private float currentBulletsPerSecond = 1f;
+    public float currentBulletsPerSecond = 1f;
     private float lastShootTime = 0f;
 
     // Ammo
