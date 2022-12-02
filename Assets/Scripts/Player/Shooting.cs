@@ -5,16 +5,19 @@ using TMPro;
 public class Shooting : MonoBehaviour
 {
     #region Components
+    [Header("Components")]
     public Transform firePoint;
     public Transform gunPivot;
     public Transform entityTransform;
     public GameObject bulletPrefab;
     public GameObject AmmoText;
+    private PlayerHealth playerHealthManager;
     #endregion
 
     #region Gun Stat Variables
     // Speed
     private float defaultBulletForce = 0f;
+    [Header("Gun Stats")]
     public float bulletForce = 0f;
 
     // Accuracy
@@ -76,17 +79,22 @@ public class Shooting : MonoBehaviour
         enableShoot = true;
         isReloading = false;
         entityTransform = GetComponent<Transform>();
+        playerHealthManager = GetComponent<PlayerHealth>();
         AmmoText = GameObject.Find("Canvas/AmmoDisplay/AmmoText");
         HandleAmmoText(isReloading);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        HandleReload();
-        if (enableShoot)
+        if (!playerHealthManager.isPlayerDead)
         {
-            HandleInputs();
+            HandleReload();
+            if (enableShoot)
+            {
+                HandleInputs();
+            }
         }
     }
 

@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.tag.Equals("Shootable"))
+        if (hitInfo.tag.Equals("Shootable") || hitInfo.tag.Equals("Enemy"))
         {
             Debug.Log(hitInfo.name + " was hit!");
             Enemy enemy = hitInfo.GetComponent<Enemy>();
@@ -37,5 +37,4 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         } 
     }
-    
 }

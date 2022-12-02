@@ -14,19 +14,24 @@ public class PlayerMovement : MonoBehaviour
     private float moveX;
     private float moveY;
     private Vector2 moveDirection;
+    private PlayerHealth playerHealthManager;
     #endregion
 
 
     // Start is called before the first frame update
     void Start()
     {
+        playerHealthManager = GetComponent<PlayerHealth>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ProcessInputs();
+        if (!playerHealthManager.isPlayerDead)
+        {
+            ProcessInputs();
+        }
     }
     void FixedUpdate()
     {

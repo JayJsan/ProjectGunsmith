@@ -7,7 +7,7 @@ public class CollidableObject : MonoBehaviour
     protected Collider2D _collider2D;
     [SerializeField]
     protected ContactFilter2D _filter2D;
-    protected List<Collider2D> _collidedObjects = new List<Collider2D>(1);
+    public List<Collider2D> _collidedObjects = new List<Collider2D>(1);
 
     // Start is called before the first frame update
     protected virtual void Start()
