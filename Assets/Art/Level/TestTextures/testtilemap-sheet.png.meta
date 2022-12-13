@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e67ea2c9429873745a361303230a8edd
+guid: 202c3dc33df09c54ea88cffc1d7c3096
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -113,14 +113,14 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 513b9f5818403a246ad13a8aef49261e
-      internalID: 1717261312
+      spriteID: 4e371a0a240197f42af08dc1532a0e8a
+      internalID: 434065017
       vertices: []
       indices: 
       edges: []
@@ -134,14 +134,56 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e4e61572b83b4343b82327355973e89
-      internalID: 951428641
+      spriteID: 00c167a64c3075a4eb54dd1578a66442
+      internalID: 1172076357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestDoors1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 10, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27ebcec0ca4065b44b1abf5203416c41
+      internalID: -1250633758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TestDoor2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 10}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f213fe5d0c6cded4a858b839fc3418c5
+      internalID: 291993126
       vertices: []
       indices: 
       edges: []
@@ -157,8 +199,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TestWall: 951428641
-      TestFloor: 1717261312
+      TestDoors1: -1250633758
+      TestDoor2: 291993126
+      TestWall: 1172076357
+      TestFloor: 434065017
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
