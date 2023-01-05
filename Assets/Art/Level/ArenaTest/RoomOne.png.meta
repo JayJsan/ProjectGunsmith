@@ -1,0 +1,912 @@
+fileFormatVersion: 2
+guid: ca9f832d54584e74ca57cc673e262019
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TopLeftCornerWall
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 304
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 190574f850d17544da9728b22fbfa745
+      internalID: -1268604381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopWall2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 304
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5f3f18af5251e14b977ddacd006825b
+      internalID: 1993688775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopRightCornerWall
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 304
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f6e23821c28214cb83c8e0873cb2bd
+      internalID: -391923880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopLeftWall
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 12, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -8}
+        - {x: -4, y: -8}
+        - {x: -4, y: 5}
+        - {x: 8, y: 5}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9030ab54349f3442a53defec8a10fd7
+      internalID: -390326498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopWall1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 15, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: 5}
+        - {x: 8, y: 5}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f19177b8d2a62ef44be60a5858a1aa70
+      internalID: -1766374929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopRightWall
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 288
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: 5}
+        - {x: 4, y: 5}
+        - {x: 4, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aa37d96f5803144dbfe46f56d4da03e
+      internalID: -885196507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LeftWall
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 272
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 12, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -8}
+        - {x: -4, y: 8}
+        - {x: -8, y: 8}
+        - {x: -8, y: -8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 289a6d9327edce947a534bbabb60df21
+      internalID: -2000301928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RightWall
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 272
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 4, y: 8}
+        - {x: 4, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0f4fe10503c0ef4dad0bd6ede9ee070
+      internalID: -513124577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopRightCornerFloor
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 841693639f4798f42ba61902404b76c1
+      internalID: 739631079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RightFloor
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2eabee14529d4f408d39a26cb27a0b6
+      internalID: 1955275161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Floor7
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba00131c1258be144b15904c265e34e4
+      internalID: -631765384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopLeftCornerFloor
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9e04b31a42f6fd49ad74809e520d765
+      internalID: -188475002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TopFloor
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4e013c290c40af4588b3cadf67f06d5
+      internalID: -1121037260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Floor6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 144
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec24b9dbe1365da4bb174abeb8f61155
+      internalID: -57123492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Floor5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 128
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d526ab7999fd806489454de68ae64398
+      internalID: 1803745520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Floor3
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e246956b19600864caa9c805c7a88e35
+      internalID: -1385108937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Floor4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fcb900c44095eb40a76251bb729e4ae
+      internalID: 578565178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Floor2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6aec429c3453264c84f39d7a3e9980c
+      internalID: -1618629975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Floor1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c07ffbef0249a3458bc272637ac4c4d
+      internalID: -849909989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LeftFloor
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0cbf4249cb59884fbd0e322cab9059e
+      internalID: -719306084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BottomLeftCornerFloor
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65bd9855152e8fe4f9b9090efc04c207
+      internalID: -1704215581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BottomFloor
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b854a0f2f170f924c872182a55f15a38
+      internalID: -2090043015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BottomRightCornerFloor
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 944daefb9691a584791202ba12ed75a9
+      internalID: -498199458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BottomLeftWall
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 12, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -4, y: -8}
+        - {x: -4, y: -2}
+        - {x: -4, y: 8}
+        - {x: -8, y: 8}
+        - {x: -8, y: -8}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bede32bad3f010f499af24d2cc743887
+      internalID: 943235931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BottomRightWall
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 12, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6b4b771bf0752d42a83d8ce55950d0f
+      internalID: 788015419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BottomLeftCornerWall
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c91c6be9c76ff7e4c8c891c79e562f17
+      internalID: 1829208517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotttomWall
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6501364d9c85fa947bb68cc0b8afced6
+      internalID: -421006489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BottomRightCornerWall
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a6459e78f384a24ea90002bfad8c9b2
+      internalID: -346990551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      RoomOne_36: -4233995
+      Floor3: -1385108937
+      RoomOne_119: 535349679
+      RoomOne_75: -738125315
+      BottomRightWall: 788015419
+      RoomOne_13: -1256977950
+      RoomOne_110: 643894176
+      RoomOne_118: 715354128
+      RoomOne_79: 993331603
+      TopLeftWall: -390326498
+      TopRightWall: -885196507
+      Floor6: -57123492
+      RoomOne_155: -329958680
+      RoomOne_149: -1921992262
+      RoomOne_23: -842585368
+      BottomRightCornerFloor: -498199458
+      RoomOne_99: -825645142
+      RoomOne_11: 917377201
+      RoomOne_143: -788223613
+      RoomOne_65: 327615906
+      BottomFloor: -2090043015
+      RoomOne_142: 1504855356
+      RoomOne_85: 105692606
+      RoomOne_125: 1361181297
+      RoomOne_22: 766247255
+      RoomOne_160: 2146473664
+      RoomOne_61: -1822996794
+      RoomOne_115: 1199410017
+      RoomOne_52: 807711862
+      RoomOne_169: -1040655279
+      RoomOne_34: 1189566039
+      RoomOne_54: 1218107992
+      RoomOne_95: 1928692470
+      BottomLeftWall: 943235931
+      RoomOne_84: -1175862464
+      Floor2: -1618629975
+      RoomOne_89: -1762821441
+      RoomOne_117: -1943559217
+      RightFloor: 1955275161
+      RoomOne_134: -529323940
+      RoomOne_86: -1083458793
+      RoomOne_92: -1365378876
+      RoomOne_129: 1337097024
+      RoomOne_166: -528999419
+      RoomOne_72: 281220537
+      RoomOne_168: -834225727
+      RoomOne_9: 2036626521
+      RoomOne_107: 982994387
+      RoomOne_64: -1270801783
+      RoomOne_124: -1901229102
+      RoomOne_137: -975288185
+      RoomOne_139: 415893333
+      RoomOne_162: 539060774
+      TopFloor: -1121037260
+      RoomOne_128: -588501740
+      RoomOne_37: 752104848
+      RoomOne_46: -914410694
+      BottomLeftCornerWall: 1829208517
+      RoomOne_49: 1321111242
+      RoomOne_56: 1434951472
+      RoomOne_53: -1259260475
+      RoomOne_25: -656672222
+      RoomOne_163: 1989581259
+      RoomOne_133: -1227721786
+      RoomOne_106: 301150555
+      RoomOne_70: -1832757798
+      RoomOne_7: -1998863784
+      RoomOne_109: 38147160
+      RoomOne_140: 1894683776
+      RoomOne_80: 1260129528
+      RoomOne_116: -483049269
+      RoomOne_126: 446614905
+      TopRightCornerWall: -391923880
+      RoomOne_93: 1310872998
+      BottomLeftCornerFloor: -1704215581
+      RoomOne_17: -1572774635
+      BotttomWall: -421006489
+      RoomOne_15: -396877757
+      RoomOne_33: -721253256
+      RoomOne_50: 645865118
+      RoomOne_121: 1538862651
+      RoomOne_4: -57657460
+      RoomOne_98: -842770734
+      RoomOne_73: 256970646
+      TopLeftCornerFloor: -188475002
+      RoomOne_26: 277641958
+      Floor7: -631765384
+      RoomOne_146: -1815554976
+      RoomOne_105: -1489911656
+      RoomOne_3: 1235895608
+      RoomOne_57: -49570839
+      RoomOne_48: -1485709571
+      RoomOne_154: 165089498
+      RoomOne_60: 1750287784
+      RoomOne_67: -170410824
+      RoomOne_82: -1293869338
+      RoomOne_127: 1712179877
+      RoomOne_91: -1559014662
+      RoomOne_43: 1448837380
+      RoomOne_81: -97657094
+      RoomOne_31: -732980150
+      RoomOne_164: -1094874996
+      RoomOne_153: 182596745
+      RoomOne_156: -2078007748
+      RoomOne_161: -701153353
+      TopRightCornerFloor: 739631079
+      Floor4: 578565178
+      RoomOne_18: 28807305
+      RoomOne_14: -1506025699
+      RoomOne_97: -1114430072
+      RoomOne_10: 624133414
+      RoomOne_35: 77208923
+      RoomOne_55: 1560872407
+      RoomOne_47: 1481934697
+      RoomOne_165: -1793515945
+      RoomOne_42: -1946673678
+      Floor1: -849909989
+      RoomOne_158: -120696820
+      RoomOne_83: -1664720799
+      RoomOne_123: -126219644
+      BottomRightCornerWall: -346990551
+      RoomOne_62: -76635277
+      RoomOne_45: 1343484974
+      RightWall: -513124577
+      RoomOne_78: -1701894413
+      RoomOne_27: -385410493
+      TopWall1: -1766374929
+      TopLeftCornerWall: -1268604381
+      LeftWall: -2000301928
+      RoomOne_103: 1624156854
+      RoomOne_87: 728316855
+      RoomOne_141: -1894964822
+      RoomOne_77: -1425989105
+      RoomOne_28: 962579292
+      RoomOne_66: -2020637324
+      RoomOne_130: -164921648
+      RoomOne_12: -1715132470
+      RoomOne_38: 1758816567
+      RoomOne_32: 745982785
+      RoomOne_131: -1975377084
+      RoomOne_114: 1569298724
+      RoomOne_138: 1414796714
+      TopWall2: 1993688775
+      RoomOne_96: -551151181
+      RoomOne_71: -384927507
+      RoomOne_167: -1643128849
+      RoomOne_29: 373534331
+      RoomOne_2: -215576817
+      RoomOne_111: 875263129
+      RoomOne_30: 1105942542
+      Floor5: 1803745520
+      RoomOne_108: 2024221798
+      RoomOne_120: -1905803224
+      RoomOne_6: -364053125
+      RoomOne_16: 1771921457
+      RoomOne_113: 70055048
+      RoomOne_8: -1703256610
+      RoomOne_157: -433012571
+      RoomOne_102: -935033593
+      RoomOne_145: 504232468
+      RoomOne_76: -1831768851
+      LeftFloor: -719306084
+      RoomOne_44: 1514702397
+      RoomOne_5: 442464901
+      RoomOne_90: 512245594
+      RoomOne_24: 1610774509
+      RoomOne_104: 542515509
+      RoomOne_59: -1608344140
+      RoomOne_144: 1874503572
+      RoomOne_94: -1611702587
+      RoomOne_136: -1126817947
+      RoomOne_159: -1067319555
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

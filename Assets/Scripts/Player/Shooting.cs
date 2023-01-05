@@ -9,6 +9,7 @@ public class Shooting : MonoBehaviour
     public Transform firePoint;
     public Transform gunPivot;
     public Transform entityTransform;
+    public Transform playerBulletHolder;
     public GameObject bulletPrefab;
     public GameObject AmmoText;
     private PlayerHealth playerHealthManager;
@@ -74,6 +75,11 @@ public class Shooting : MonoBehaviour
     public bool isReloading = false;
     #endregion
 
+    private void Awake()
+    {
+        playerBulletHolder = GameObject.Find("PlayerBulletHolder").GetComponent<Transform>();
+    }
+
     private void Start()
     {
         enableShoot = true;
@@ -131,7 +137,7 @@ public class Shooting : MonoBehaviour
             #endregion
 
             // Create bullet
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, playerBulletHolder);
             Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
 
             // Modify Damage
@@ -142,6 +148,9 @@ public class Shooting : MonoBehaviour
 
             // Add force (speed of bullet)
             rbBullet.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
+
+            // Add camera shake
+            CinemachineShake.Instance.ShakeCamera(4f, .05f);
         }
     }
 

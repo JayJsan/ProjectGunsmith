@@ -26,3 +26,5 @@ MonoBehaviour:
   reloadTime: 0
   numberOfBullets: 1
   isAuto: 0
+  cost: 31
+  randomCostRange: 24

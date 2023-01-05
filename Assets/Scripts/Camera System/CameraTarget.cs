@@ -8,6 +8,9 @@ public class CameraTarget : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float cameraRange;
 
+    void Start() { 
+        transform.position = cam.transform.position;
+    }
     // Update is called once per frame
     void Update()
     {

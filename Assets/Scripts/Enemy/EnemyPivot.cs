@@ -9,7 +9,7 @@ public class EnemyPivot : MonoBehaviour
 
     private void Start()
     {
-        enemy = GameObject.Find("Enemy");
+        enemy = this.gameObject;
         target = GameObject.Find("Player");
     }
 

@@ -17,11 +17,16 @@ public class InventoryManager : MonoBehaviour
     public List<PartItemData> equippedSpecials = new List<PartItemData>();
     #endregion
 
+    #region OTHER ITEMS LIST
+    public int goldAmount = 0;
+    #endregion
+
     #region UI
-    private TextMeshProUGUI partsUI;
-    private TextMeshProUGUI statsUI;
-    private Shooting shootManager;
-    private GameObject menu;
+    public TextMeshProUGUI partsUI;
+    public TextMeshProUGUI statsUI;
+    public TextMeshProUGUI goldUI;
+    public Shooting shootManager;
+    public GameObject menu;
     #endregion
 
     private bool gunPartChange = false;
@@ -29,9 +34,22 @@ public class InventoryManager : MonoBehaviour
     
     private void Start()
     {
-        partsUI = GameObject.Find("Canvas/Menu/PartDisplay/Parts").GetComponent<TextMeshProUGUI>();
-        statsUI = GameObject.Find("Canvas/Menu/StatDisplay/Stats").GetComponent<TextMeshProUGUI>();
-        menu = GameObject.Find("Canvas/Menu");
+        if (partsUI == null)
+        {
+            partsUI = GameObject.Find("Canvas/Menu/PartDisplay/Parts").GetComponent<TextMeshProUGUI>();
+        }
+        if (statsUI == null)
+        {
+            statsUI = GameObject.Find("Canvas/Menu/StatDisplay/Stats").GetComponent<TextMeshProUGUI>();
+        }
+        if (goldUI == null)
+        {
+            goldUI = GameObject.Find("Canvas/GoldDisplay/GoldText").GetComponent<TextMeshProUGUI>();
+        }
+        if (menu == null)
+        {
+            menu = GameObject.Find("Canvas/Menu");
+        }
         shootManager = GetComponent<Shooting>();
 
         shootManager.ResetStats();
@@ -100,6 +118,32 @@ public class InventoryManager : MonoBehaviour
                 break;
         }
     }
+
+    #region Gold Methods
+    public void AddGold(int gold)
+    {
+        goldAmount += gold;
+        UpdateGold();
+    }
+
+    public void UpdateGold()
+    {
+        goldUI.text = "Gold: " + goldAmount;
+    }
+
+    // returns true if bro isn't broke
+    public bool SubtractGold(int gold)
+    {
+        if (gold > goldAmount)
+        {
+            Debug.Log("this guy broke");
+            return false;
+        }
+        UpdateGold();
+        goldAmount -= gold;
+        return true;
+    }
+    #endregion
 
     void DropPart(PartItemData newGunPart, Transform gunPartPosition)
     {

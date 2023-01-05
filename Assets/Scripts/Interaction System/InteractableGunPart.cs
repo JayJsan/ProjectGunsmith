@@ -5,6 +5,13 @@ using UnityEngine;
 public class InteractableGunPart : InteractableObject
 {
     public PartItemData gunPartData;
+
+    private void Awake()
+    {
+        // Add random gold to gunpart
+        gunPartData.cost += Random.Range(0, gunPartData.randomCostRange);
+    }
+
     protected override void Update()
     {
         _collider2D.OverlapCollider(_filter2D, _collidedObjects);
@@ -17,6 +24,11 @@ public class InteractableGunPart : InteractableObject
         }
     }
     protected override void OnInteract()
+    {
+        SwapGunPart();
+    }
+
+    private void SwapGunPart()
     {
         // Swap new part with old part
         InventoryManager inventoryManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();

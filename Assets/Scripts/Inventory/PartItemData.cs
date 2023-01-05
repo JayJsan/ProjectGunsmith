@@ -53,6 +53,9 @@ public class PartItemData : ScriptableObject
 
     // Determines if weapon is semi-auto or automatic
     public bool isAuto = false;
-    #endregion
 
+    public int cost = 0;
+    [Range(0,100)]
+    public int randomCostRange = 0;
+    #endregion
 }

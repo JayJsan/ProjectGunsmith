@@ -11,6 +11,7 @@ TagManager:
   - Shootable
   - Holder
   - Enemy
+  - ShopItem
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - Damagables
   - GunUI
   - Obstacles
-  - 
-  - 
+  - Decoration
+  - Shop
   - 
   - 
   - 

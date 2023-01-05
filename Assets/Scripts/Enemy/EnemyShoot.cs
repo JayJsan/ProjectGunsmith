@@ -1,5 +1,7 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 
 public class EnemyShoot : MonoBehaviour
@@ -11,6 +13,8 @@ public class EnemyShoot : MonoBehaviour
     public Transform entityTransform;
     public Transform playerTransform;
     public GameObject bulletPrefab;
+    private AIDestinationSetter _AIDestinationSetter;
+    public Transform enemyBulletHolder;
     #endregion
 
     #region Gun Stat Variables
@@ -61,6 +65,14 @@ public class EnemyShoot : MonoBehaviour
     public bool onSight = false;
     #endregion
 
+    private void Awake()
+    {
+        playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        _AIDestinationSetter = GetComponent<AIDestinationSetter>();
+        _AIDestinationSetter.target = playerTransform;
+        enemyBulletHolder = GameObject.Find("EnemyBulletHolder").GetComponent<Transform>();
+    }
+
     private void Start()
     {
         enableShoot = true;
@@ -110,7 +122,7 @@ public class EnemyShoot : MonoBehaviour
             #endregion
 
             // Create bullet
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, enemyBulletHolder);
             Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
 
             // Modify Damage
@@ -157,7 +169,7 @@ public class EnemyShoot : MonoBehaviour
     void DetectPlayer()
     {
         Vector2 playerDir = playerTransform.position - transform.position;
-        int layerMask = ~(LayerMask.GetMask("Damagables"));
+        int layerMask = ~(LayerMask.GetMask("Damagables", "Decoration"));
         Debug.DrawRay(transform.position, playerDir * 30f);
         var hit = Physics2D.Raycast(transform.position, playerDir, 30f, layerMask);
         Debug.Log("Test");

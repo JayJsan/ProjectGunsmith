@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -1211402296, guid: 3ed344152ba2b5d4dbe56c5d6e64794c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -103,7 +103,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.15625, y: 0.65625}
+    oldSize: {x: 1.5390625, y: 0.1640625}
     newSize: {x: 6.15625, y: 0.65625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -138,4 +138,5 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  _collidedObjects: []
   gunPartData: {fileID: 11400000, guid: 1aa08706b726f9246a0596c464e83511, type: 2}
