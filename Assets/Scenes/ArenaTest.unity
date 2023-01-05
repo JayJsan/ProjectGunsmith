@@ -4287,15 +4287,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
+  - name: Wave One
+    enemy: {fileID: 790398317595156793, guid: f25aea4a1de120441ad5d72667d414f8, type: 3}
+    count: 3
+    rate: 10
   - name: Wave Two
     enemy: {fileID: 790398317595156793, guid: f25aea4a1de120441ad5d72667d414f8, type: 3}
-    count: 100
+    count: 6
     rate: 10
+  nextWave: 0
   spawnPoints: []
   enemiesAlive: 3
   timeBetweenWaves: 5
   waveCountdown: 0
   startRound: 1
+  state: 2
 --- !u!4 &1520035860
 Transform:
   m_ObjectHideFlags: 0

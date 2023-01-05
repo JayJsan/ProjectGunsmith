@@ -24,7 +24,7 @@ public class WaveSpawner : MonoBehaviour
     }
 
     public Wave[] waves;
-    private int nextWave = 0;
+    public int nextWave = 0;
 
     public Transform[] spawnPoints;
 
@@ -36,7 +36,7 @@ public class WaveSpawner : MonoBehaviour
 
     //private float searchCountdown = 1f;
 
-    private SpawnState state = SpawnState.COUNTING;
+    public SpawnState state = SpawnState.COUNTING;
 
     private void Start()
     {
@@ -91,7 +91,7 @@ public class WaveSpawner : MonoBehaviour
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
 
-        if (nextWave + 1 >= waves.Length - 1)
+        if (nextWave >= waves.Length - 1)
         {
             // Reached end of waves array!
             nextWave = 0;
