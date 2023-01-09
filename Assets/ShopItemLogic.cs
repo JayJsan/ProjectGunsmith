@@ -15,12 +15,6 @@ public class ShopItemLogic : MonoBehaviour
         GetComponent<ShopUILogic>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // This method is used by the ShopTriggerLogic script
     public void PlayerBuy(GameObject shopItem)
     {
@@ -38,7 +32,8 @@ public class ShopItemLogic : MonoBehaviour
 
             // Remove shop item from shop
             Destroy(shopItem);
-        } else
+        }
+        else
         {
             // this guy broke fr
             shopUI.PlayerIsBroke();
