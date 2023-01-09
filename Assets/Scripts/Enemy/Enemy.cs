@@ -10,6 +10,11 @@ public class Enemy : MonoBehaviour
     private int goldDrop;
     public bool randomGoldDrop = false;
 
+    public bool randomDamageOn = false;
+
+    [Range(0, 1000)]
+    public int randomDamage = 0;
+
     public static WaveSpawner waveSpawner;
     public static InventoryManager inventoryManager;
 
@@ -30,6 +35,11 @@ public class Enemy : MonoBehaviour
         } else
         {
             goldDrop = baseGoldDrop;
+        }
+
+        if (randomDamageOn)
+        {
+            GetComponent<EnemyShoot>().damage += Random.Range(0, randomDamage);
         }
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
-
+using TMPro;
 public class WaveSpawner : MonoBehaviour
 {
     /* Code taken and modified from Brackey's "How to make a Wave Spawner in Unity 5" Video
@@ -32,6 +32,8 @@ public class WaveSpawner : MonoBehaviour
     public float timeBetweenWaves = 5f;
     public float waveCountdown;
 
+    public TextMeshProUGUI waveText;
+
     public bool startRound = false;
 
     //private float searchCountdown = 1f;
@@ -53,6 +55,8 @@ public class WaveSpawner : MonoBehaviour
         {
             return;
         }
+
+        waveText.text = waves[nextWave].name;
 
         if (state == SpawnState.WAITING)
         {
@@ -90,6 +94,7 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("Wave completed!");
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
+        //waveText.text = "Wave: " + ((nextWave + 1).ToString());
 
         if (nextWave >= waves.Length - 1)
         {
@@ -150,7 +155,6 @@ public class WaveSpawner : MonoBehaviour
         
         // choose randmo spawnpoint
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-
 
         // Spawn enemy
         Instantiate(_enemy, _sp.position, _sp.rotation);

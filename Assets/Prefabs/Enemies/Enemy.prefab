@@ -166,6 +166,8 @@ MonoBehaviour:
   contactDamage: 1
   baseGoldDrop: 10
   randomGoldDrop: 1
+  randomDamageOn: 1
+  randomDamage: 5
   randomGoldRange: 1000
 --- !u!114 &790398317595156774
 MonoBehaviour:

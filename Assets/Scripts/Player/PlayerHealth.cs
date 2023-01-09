@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : CollidableObject
 {
-    private int defaultPlayerHealth = 6;
+    private int defaultPlayerHealth = 100;
 
-    public int currentPlayerHealth = 6;
-    public int maxPlayerHealth = 6;
+    public int currentPlayerHealth = 100;
+    public int maxPlayerHealth = 100;
+    private int previousHealth = 100;
     int damageDealt = 0;
 
     public bool isPlayerDead = false;
@@ -20,12 +22,14 @@ public class PlayerHealth : CollidableObject
 
     [Header("Invincibiltiy Frames Stuff")]
     public Color flashColor;
-    public Color regularColor;
+    public Color playerColor;
+    public Color heartColor;
     public float flashDuration;
     public int numberOfFlashes;
     public SpriteRenderer playerSprite;
-    // Heart Stuff
     [Header("Heart Stuff")]
+    // Heart Stuff
+    /*
     public Image[] hearts = new Image[3];
     public Sprite fullHeart;
     public Sprite halfHeart;
@@ -39,21 +43,29 @@ public class PlayerHealth : CollidableObject
     private int damagedFullHearts;
     private bool hasDamagedHalfHeart;
     private int lastFullHearts;
+    */
+    public Slider healthSlider;
+    public Slider healthWhiteSlider;
+    public GameObject healthFillBar;
 
     public bool hit = false;
 
     // Start is called before the first frame update
     protected override void Start()
     {
-        lastFullHearts = Mathf.FloorToInt(currentPlayerHealth / 2);
-        fullHearts = Mathf.FloorToInt(currentPlayerHealth / 2);
+        // lastFullHearts = Mathf.FloorToInt(currentPlayerHealth / 2);
+        // fullHearts = Mathf.FloorToInt(currentPlayerHealth / 2);
         _collider2D = GetComponent<Collider2D>();
         loseText = GameObject.Find("Canvas/LoseScreen/LoseText");
-        hearts[0] = GameObject.Find("Canvas/HealthDisplay/Heart1").GetComponent<Image>();
-        hearts[1] = GameObject.Find("Canvas/HealthDisplay/Heart2").GetComponent<Image>();
-        hearts[2] = GameObject.Find("Canvas/HealthDisplay/Heart3").GetComponent<Image>();
-
+        // hearts[0] = GameObject.Find("Canvas/HealthDisplay/Heart1").GetComponent<Image>();
+        // hearts[1] = GameObject.Find("Canvas/HealthDisplay/Heart2").GetComponent<Image>();
+        // hearts[2] = GameObject.Find("Canvas/HealthDisplay/Heart3").GetComponent<Image>();
+        //healthSlider = GameObject.Find("Canvas/HealthDisplay").GetComponent<Slider>();
         loseText.SetActive(false);
+
+        healthSlider.maxValue = maxPlayerHealth;
+        healthWhiteSlider.maxValue = maxPlayerHealth;
+        UpdateHealthBarUI();
     }
 
     // Update is called once per frame
@@ -77,15 +89,17 @@ public class PlayerHealth : CollidableObject
     {
         int currentFlash = 0;
         _collider2D.enabled = false;
-        UpdateDamageHeartSprite();
+        UpdateDamageHeartSprite(previousHealth); 
         while (currentFlash < numberOfFlashes)
         {
             playerSprite.color = flashColor;
             yield return new WaitForSeconds(flashDuration);
-            playerSprite.color = regularColor;
+            playerSprite.color = playerColor;
             yield return new WaitForSeconds(flashDuration);
             currentFlash++;
         }
+        UpdateDamageBarUI(previousHealth);
+        previousHealth = currentPlayerHealth;
         UpdateHeartSprite();
         CheckIfPlayerHasDied();
         _collider2D.enabled = true;
@@ -102,23 +116,26 @@ public class PlayerHealth : CollidableObject
             damageDealt = collidedObject.GetComponent<Enemy>().contactDamage;
         }
         currentPlayerHealth -= damageDealt;
-        UpdateHeartSprite();
+        UpdateHeartSprite(); 
         StartCoroutine(FlashCoroutine());
         Debug.Log("Player hit with " + collidedObject.name);
     }
 
     public void ResetPlayerHealth()
     {
+        UpdateHealthBarUI();
         this.currentPlayerHealth = defaultPlayerHealth;
     } 
 
     public void HealPlayerHealtlh()
     {
+        UpdateHealthBarUI();
         this.currentPlayerHealth = maxPlayerHealth;
     }
 
     public void CheckIfPlayerHasDied()
     {
+        UpdateHealthBarUI();
         if (currentPlayerHealth <= 0)
         {
             isPlayerDead = true;
@@ -132,8 +149,26 @@ public class PlayerHealth : CollidableObject
         }
     }
 
+    void UpdateDamageBarUI(int previousHealth)
+    {
+
+        //LeanTween.value(gameObject, previousHealth, currentPlayerHealth, 3);
+        healthWhiteSlider.value = currentPlayerHealth;
+
+
+    }
+
+
+    void UpdateHealthBarUI()
+    {
+        healthSlider.value = currentPlayerHealth;
+    }
+
     void UpdateHeartSprite()
     {
+        UpdateHealthBarUI();
+        healthFillBar.GetComponent<Image>().color = heartColor;
+        /*
         lastFullHearts = fullHearts;
         fullHearts = Mathf.FloorToInt(currentPlayerHealth / 2);
         hasHalfHeart = !(currentPlayerHealth % 2 == 0);
@@ -159,10 +194,18 @@ public class PlayerHealth : CollidableObject
         {
             hearts[fullHearts].sprite = halfHeart;
         }
+        */
     }
 
-    void UpdateDamageHeartSprite()
+    void UpdateDamageHeartSprite(int previousHealth)
     {
+        UpdateHealthBarUI();
+        healthWhiteSlider.value = previousHealth;
+        //healthFillBar.gameObject.GetComponent<Image>().color = flashColor;
+
+
+
+
         // Calculating how many white heart damaged sprites need to be displayed
         /*
         for (int i = Mathf.FloorToInt(currentPlayerHealth / 2); i > (Mathf.FloorToInt((currentPlayerHealth - damageDealt) / 2)); i--)
@@ -187,6 +230,7 @@ public class PlayerHealth : CollidableObject
         }
         */
 
+        /*
         if (hasDamagedHalfHeart)
         {
             if (hasHalfHeart)
@@ -198,5 +242,6 @@ public class PlayerHealth : CollidableObject
                 hearts[fullHearts].sprite = damagedHalfHeart;
             }
         }
+        */
     }
 }
