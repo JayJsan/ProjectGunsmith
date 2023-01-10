@@ -29,12 +29,18 @@ public class Bullet : MonoBehaviour
         if (hitInfo.tag.Equals("Shootable") || hitInfo.tag.Equals("Enemy"))
         {
             Debug.Log(hitInfo.name + " was hit!");
-            Enemy enemy = hitInfo.GetComponent<Enemy>();
+            Enemy enemy = null;
+
+            if (hitInfo.GetComponent<Enemy>() != null)
+            {
+                enemy = hitInfo.GetComponent<Enemy>();
+            }
+
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
             }
             Destroy(gameObject);
-        } 
+        }
     }
 }

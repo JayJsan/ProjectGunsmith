@@ -10,16 +10,19 @@ public class WaveSpawner : MonoBehaviour
      *
      */
 
-    public enum SpawnState { SPAWNING, WAITING, COUNTING};
+    public enum SpawnState { SPAWNING, WAITING, COUNTING, START };
 
     [System.Serializable]
     public class Wave
     {
+        public enum TypeOfWave { ENEMY, BOSS, SHOP }
+        public TypeOfWave waveType;
         public string name;
-        public Transform enemy;
+        public List<Transform> enemies;
 
         // Number of enemies to spawn
-        public int count;
+        // Position on int corresponds to which enemy on enemy list
+        public List<int> enemyCount;
         public float rate;
     }
 
@@ -34,28 +37,46 @@ public class WaveSpawner : MonoBehaviour
 
     public TextMeshProUGUI waveText;
 
-    public bool startRound = false;
+    public bool firstRound = false;
 
     //private float searchCountdown = 1f;
 
     public SpawnState state = SpawnState.COUNTING;
-
+    public GameObject Shop;
+    public GameObject ShopUI;
+    public GameObject Bob;
+    public GameObject BobUI;
     private void Start()
     {
+        firstRound = false;
+        state = SpawnState.START;
         enemiesAlive = 0;
         waveCountdown = timeBetweenWaves;
-
+        waveText.gameObject.SetActive(false);
         // Find spawnpoints gameobject, check how many there are, and assign to spawnpoints;
         spawnPoints = GameObject.Find("SpawnPoints").GetComponentsInChildren<Transform>();
     }
 
     private void Update()
     {
-        if (!startRound)
+        if (state == SpawnState.START)
         {
             return;
         }
 
+        if (waves[nextWave].waveType == Wave.TypeOfWave.SHOP)
+        {
+            //OnShop = true;
+            // there's supposed to be a start timer here
+            waveText.text = "Shopping! :D";
+            Bob.SetActive(true);
+            BobUI.SetActive(true);
+            Shop.SetActive(true);
+            ShopUI.SetActive(true);
+            return;
+        }
+
+        waveText.gameObject.SetActive(true);
         waveText.text = waves[nextWave].name;
 
         if (state == SpawnState.WAITING)
@@ -65,8 +86,9 @@ public class WaveSpawner : MonoBehaviour
             {
                 // Begin new round
                 BeginNewWave();
-                 
-            } else
+
+            }
+            else
             {
                 // if enemies are still alive
                 return;
@@ -83,7 +105,8 @@ public class WaveSpawner : MonoBehaviour
                     StartCoroutine(SpawnWave(waves[nextWave]));
                 }
             }
-        } else
+        }
+        else
         {
             waveCountdown -= Time.deltaTime;
         }
@@ -101,7 +124,8 @@ public class WaveSpawner : MonoBehaviour
             // Reached end of waves array!
             nextWave = 0;
             Debug.Log("All waves complete!! Looping to first wave");
-        } else
+        }
+        else
         {
             nextWave++;
         }
@@ -130,13 +154,35 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("Spawning Wave: " + _wave.name);
         state = SpawnState.SPAWNING;
 
+        int temp = 0;
+        foreach (Transform enemy in _wave.enemies)
+        {
+            for (int i = 0; i < _wave.enemyCount[temp]; i++)
+            {
+                SpawnEnemy(enemy);
+                AddEnemiesAlive();
+                yield return new WaitForSeconds(1f / _wave.rate);
+            }
+            //AddEnemiesAlive(_wave.enemyCount[temp]);
+            temp++;
+        }
+        /*
+        for (int i = 0; i < _wave.enemies.Count - 1; i++)
+        {
+
+        }
+        */
+
         // Spawn wave
+        /*
         for (int i = 0; i < _wave.count; i++)
         {
-            SpawnEnemy(_wave.enemy);
+            //SpawnEnemy(_wave.enemy);
             enemiesAlive++;
             yield return new WaitForSeconds(1f / _wave.rate);
         }
+        */
+
 
         state = SpawnState.WAITING;
 
@@ -146,18 +192,48 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy(Transform _enemy)
     {
         Debug.Log("Spawning Enemy: " + _enemy.name);
-        
+
         if (spawnPoints.Length == 0)
         {
             Debug.Log("NO SPAWNPOITNS FOUDNS!!!!");
             return;
         }
-        
+
         // choose randmo spawnpoint
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         // Spawn enemy
         Instantiate(_enemy, _sp.position, _sp.rotation);
-        
+
+    }
+
+    public void StartRound()
+    {
+        if (firstRound == false)
+        {
+            firstRound = true;
+            state = SpawnState.COUNTING;
+            return;
+        }
+        nextWave++;
+    }
+
+    public void SubtractEnemiesAlive()
+    {
+        enemiesAlive--;
+    }
+
+    public void SubtractEnemiesAlive(int amount)
+    {
+        enemiesAlive -= amount;
+    }
+
+    public void AddEnemiesAlive()
+    {
+        enemiesAlive++;
+    }
+    public void AddEnemiesAlive(int amount)
+    {
+        enemiesAlive += amount;
     }
 }

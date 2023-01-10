@@ -89,7 +89,7 @@ public class PlayerHealth : CollidableObject
     {
         int currentFlash = 0;
         _collider2D.enabled = false;
-        UpdateDamageHeartSprite(previousHealth); 
+        UpdateDamageHeartSprite(previousHealth);
         while (currentFlash < numberOfFlashes)
         {
             playerSprite.color = flashColor;
@@ -112,11 +112,13 @@ public class PlayerHealth : CollidableObject
         if (collidedObject.GetComponent<EnemyBullet>() != null)
         {
             damageDealt = collidedObject.GetComponent<EnemyBullet>().damage;
-        } else {
+        }
+        else
+        {
             damageDealt = collidedObject.GetComponent<Enemy>().contactDamage;
         }
         currentPlayerHealth -= damageDealt;
-        UpdateHeartSprite(); 
+        UpdateHeartSprite();
         StartCoroutine(FlashCoroutine());
         Debug.Log("Player hit with " + collidedObject.name);
     }
@@ -125,7 +127,7 @@ public class PlayerHealth : CollidableObject
     {
         UpdateHealthBarUI();
         this.currentPlayerHealth = defaultPlayerHealth;
-    } 
+    }
 
     public void HealPlayerHealtlh()
     {
@@ -151,13 +153,25 @@ public class PlayerHealth : CollidableObject
 
     void UpdateDamageBarUI(int previousHealth)
     {
-
+        // Method resets the bar and smoothly disappears 
         //LeanTween.value(gameObject, previousHealth, currentPlayerHealth, 3);
-        healthWhiteSlider.value = currentPlayerHealth;
+        //healthWhiteSlider.value = currentPlayerHealth;
+        LeanTween.value(gameObject, previousHealth, currentPlayerHealth, 1).setEase(LeanTweenType.easeOutBack).setOnUpdate((float val) =>
+        {
+            healthWhiteSlider.value = val;
+        });
 
+        /*
+        cdId = LeanTween.value(gameObject, healthWhiteSlider.maxValue, 0, healthWhiteSlider.maxValue).setEase(LeanTweenType.linear).setOnUpdate((float val) =>
+        {
+            cdSlider.value = val;
+        }).setOnComplete(() =>
+        {
+            cdEnd();
+        }).id;
+        */
 
     }
-
 
     void UpdateHealthBarUI()
     {

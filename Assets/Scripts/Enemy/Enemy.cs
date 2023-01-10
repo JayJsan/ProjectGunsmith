@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     public int health = 100;
     public int contactDamage = 1;
     public int baseGoldDrop = 1;
+    private int lastBulletToHit;
+
     private int goldDrop;
     public bool randomGoldDrop = false;
 
@@ -15,16 +17,18 @@ public class Enemy : MonoBehaviour
     [Range(0, 1000)]
     public int randomDamage = 0;
 
-    public static WaveSpawner waveSpawner;
+    public WaveSpawner waveSpawner;
     public static InventoryManager inventoryManager;
 
-    [Range(0,1000)]
+    [Range(0, 1000)]
     public int randomGoldRange = 5;
 
+    public Collider2D _collider;
     private void Awake()
     {
         inventoryManager = GameObject.Find("Player").GetComponent<InventoryManager>();
         waveSpawner = GameObject.Find("GameManager").GetComponent<WaveSpawner>();
+        _collider = GetComponent<Collider2D>();
     }
 
     private void Start()
@@ -32,7 +36,8 @@ public class Enemy : MonoBehaviour
         if (randomGoldDrop)
         {
             goldDrop = baseGoldDrop + Random.Range(0, randomGoldRange);
-        } else
+        }
+        else
         {
             goldDrop = baseGoldDrop;
         }
@@ -50,7 +55,8 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             // InventoryManager playerInventory = GameObject.Find("Player").GetComponent<InventoryManager>();
-            if (inventoryManager != null) {
+            if (inventoryManager != null)
+            {
                 inventoryManager.AddGold(goldDrop);
             }
             Die();
@@ -61,8 +67,18 @@ public class Enemy : MonoBehaviour
     {
         if (waveSpawner.enemiesAlive > 0)
         {
-            waveSpawner.enemiesAlive -= 1;
+            waveSpawner.SubtractEnemiesAlive(1);
         }
         Destroy(gameObject);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.tag == ("Bullet"))
+        {
+            if (lastBulletToHit != hit.gameObject.GetInstanceID())
+                TakeDamage(hit.gameObject.GetComponent<Bullet>().damage);
+            lastBulletToHit = hit.gameObject.GetInstanceID();
+        }
     }
 }
