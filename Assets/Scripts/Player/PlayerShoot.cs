@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 using TMPro;
 public class PlayerShoot : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerShoot : MonoBehaviour
     public Transform playerBulletHolder;
     public GameObject bulletPrefab;
     public GameObject AmmoText;
+    public ObjectPool bulletPool;
     private PlayerHealth playerHealthManager;
     #endregion
 
@@ -137,7 +139,14 @@ public class PlayerShoot : MonoBehaviour
             #endregion
 
             // Create bullet
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, playerBulletHolder);
+            //GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, playerBulletHolder); //--- THIS IS HOW WE USED TO INSTIANTIATE
+            // IMPLEMENTING OBJECT POOL SYSTEM------------
+            GameObject bullet = bulletPool.GetPooledObject();
+            if (bullet == null) { return; }
+            bullet.transform.SetPositionAndRotation(firePoint.position, firePoint.rotation);
+            bullet.SetActive(true);
+            // IMPLEMENTING OBJECT POOL SYSTEM -----------
+
             Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
 
             // Modify Damage

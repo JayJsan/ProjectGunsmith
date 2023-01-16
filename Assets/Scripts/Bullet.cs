@@ -21,7 +21,11 @@ public class Bullet : MonoBehaviour
     void FixedUpdate()
     {
         float distanceDelta = (transform.position - firePoint.transform.position).magnitude;
-        if (distanceDelta > Range) { Destroy(gameObject); }
+        if (distanceDelta > Range)
+        {
+            //Destroy(gameObject); 
+            gameObject.SetActive(false); // FOR OUR GAMEOBJECT POOLIGN SYSTEM
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
@@ -40,7 +44,8 @@ public class Bullet : MonoBehaviour
             {
                 enemy.TakeDamage(damage);
             }
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false); // FOR OUR GAMEOBJECT POOLIGN SYSTEM
         }
     }
 }
