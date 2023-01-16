@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class Shooting : MonoBehaviour
+public class PlayerShoot : MonoBehaviour
 {
     #region Components
     [Header("Components")]
@@ -88,7 +88,7 @@ public class Shooting : MonoBehaviour
         playerHealthManager = GetComponent<PlayerHealth>();
         AmmoText = GameObject.Find("Canvas/AmmoDisplay/AmmoText");
         HandleAmmoText(isReloading);
-        
+
     }
 
     // Update is called once per frame

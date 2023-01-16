@@ -25,13 +25,13 @@ public class InventoryManager : MonoBehaviour
     public TextMeshProUGUI partsUI;
     public TextMeshProUGUI statsUI;
     public TextMeshProUGUI goldUI;
-    public Shooting shootManager;
+    public PlayerShoot shootManager;
     public GameObject menu;
     #endregion
 
     private bool gunPartChange = false;
     private bool inventoryOpen = false;
-    
+
     private void Start()
     {
         if (partsUI == null)
@@ -50,7 +50,7 @@ public class InventoryManager : MonoBehaviour
         {
             menu = GameObject.Find("Canvas/Menu");
         }
-        shootManager = GetComponent<Shooting>();
+        shootManager = GetComponent<PlayerShoot>();
 
         shootManager.ResetStats();
         UpdateStats();
@@ -66,7 +66,8 @@ public class InventoryManager : MonoBehaviour
             if (inventoryOpen)
             {
                 CloseInventory();
-            } else
+            }
+            else
             {
                 UpdateStatsUI();
                 OpenInventory();
@@ -75,7 +76,7 @@ public class InventoryManager : MonoBehaviour
         if (gunPartChange)
         {
             gunPartChange = false;
-            GetComponent<Shooting>().ResetStats();
+            GetComponent<PlayerShoot>().ResetStats();
             UpdateStats();
             UpdateStatsUI();
         }
@@ -152,7 +153,7 @@ public class InventoryManager : MonoBehaviour
 
     void UpdateStats()
     {
-        Shooting s = GetComponent<Shooting>();
+        PlayerShoot s = GetComponent<PlayerShoot>();
         // Barrel affects bullet speed, # of bullets fired, fire rate, spread
         UpdateBarrel(s);
 
@@ -173,7 +174,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     #region Change Stats Methods
-    void UpdateBarrel(Shooting s)
+    void UpdateBarrel(PlayerShoot s)
     {
         // Barrel affects bullet speed, # of bullets fired, fire rate, spread, range
         s.ChangeSpeed(equippedBarrel.bulletForce);
@@ -183,14 +184,14 @@ public class InventoryManager : MonoBehaviour
         s.ChangeRange(equippedBarrel.range);
     }
 
-    void UpdateTrigger(Shooting s)
+    void UpdateTrigger(PlayerShoot s)
     {
         // Trigger affects fire rate, and whether the gun is semi auto or not
         s.ChangeFireRate(equippedTrigger.fireRateMultiplier);
         s.isAuto = equippedTrigger.isAuto;
     }
 
-    void UpdateMagazine(Shooting s)
+    void UpdateMagazine(PlayerShoot s)
     {
         // Magazine affect max ammo, damage, range, reload time
         s.ChangeMaxAmmo(equippedMagazine.maxAmmo);
@@ -199,19 +200,19 @@ public class InventoryManager : MonoBehaviour
         s.ChangeReloadTime(equippedMagazine.reloadTime);
     }
 
-    void UpdateStock(Shooting s)
+    void UpdateStock(PlayerShoot s)
     {
         // Stock affects accuracy, bullet spread
         s.ChangeSpreadAngle(equippedStock.accuracyMultiplier);
     }
 
-    void UpdateSight(Shooting s)
+    void UpdateSight(PlayerShoot s)
     {
         // Sight affect accuracy
         s.ChangeSpreadAngle(equippedSight.accuracyMultiplier);
     }
 
-    void UpdateSpecial(Shooting s)
+    void UpdateSpecial(PlayerShoot s)
     {
         // Special affects everything depending on what it is.
         foreach (PartItemData equippedSpecial in equippedSpecials)
@@ -240,7 +241,7 @@ public class InventoryManager : MonoBehaviour
             "Stock: {3}\r\n" +
             "Sight {4}\r\n" +
             "Specials: n/a\r\n",
-            equippedBarrel.displayName, 
+            equippedBarrel.displayName,
             equippedTrigger.displayName,
             equippedMagazine.displayName,
             equippedStock.displayName,
@@ -252,7 +253,8 @@ public class InventoryManager : MonoBehaviour
         if (shootManager.isAuto)
         {
             triggerType = "Auto";
-        } else
+        }
+        else
         {
             triggerType = "Semi-Auto";
         }

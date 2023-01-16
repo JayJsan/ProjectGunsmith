@@ -27,32 +27,19 @@ public class PlayerHealth : CollidableObject
     public float flashDuration;
     public int numberOfFlashes;
     public SpriteRenderer playerSprite;
-    [Header("Heart Stuff")]
-    // Heart Stuff
-    /*
-    public Image[] hearts = new Image[3];
-    public Sprite fullHeart;
-    public Sprite halfHeart;
-    public Sprite emptyHeart;
-    public Sprite damagedFullHeart;
-    public Sprite damagedHalfHeart;
-    public Sprite halfHeartHalfDamaged;
-
-    private int fullHearts;
-    private bool hasHalfHeart;
-    private int damagedFullHearts;
-    private bool hasDamagedHalfHeart;
-    private int lastFullHearts;
-    */
+    [Header("Health Bar")]
     public Slider healthSlider;
     public Slider healthWhiteSlider;
     public GameObject healthFillBar;
-
+    public int lastBulletHitID;
+    public float damageBarCountdown = 2;
     public bool hit = false;
+    private bool hasRun = false;
 
     // Start is called before the first frame update
     protected override void Start()
     {
+        _collidedObjects = new List<Collider2D>();
         // lastFullHearts = Mathf.FloorToInt(currentPlayerHealth / 2);
         // fullHearts = Mathf.FloorToInt(currentPlayerHealth / 2);
         _collider2D = GetComponent<Collider2D>();
@@ -64,6 +51,7 @@ public class PlayerHealth : CollidableObject
         loseText.SetActive(false);
 
         healthSlider.maxValue = maxPlayerHealth;
+        healthWhiteSlider.value = maxPlayerHealth;
         healthWhiteSlider.maxValue = maxPlayerHealth;
         UpdateHealthBarUI();
     }
@@ -73,12 +61,28 @@ public class PlayerHealth : CollidableObject
     {
         if (!isPlayerDead)
         {
+            if (damageBarCountdown > 0)
+            {
+                damageBarCountdown -= Time.deltaTime;
+            }
+            else
+            {
+                if (!hasRun)
+                {
+                    UpdateDamageBarUI(previousHealth);
+                    previousHealth = currentPlayerHealth;
+                    hasRun = true;
+                }
+            }
+
             _collider2D.OverlapCollider(_filter2D, _collidedObjects);
             foreach (var o in _collidedObjects)
             {
                 if (!hit)
                 {
-                    hit = true;
+                    //hit = true;
+                    damageBarCountdown = 2;
+                    hasRun = false;
                     OnCollided(o.gameObject);
                 }
             }
@@ -88,8 +92,8 @@ public class PlayerHealth : CollidableObject
     private IEnumerator FlashCoroutine()
     {
         int currentFlash = 0;
-        _collider2D.enabled = false;
-        UpdateDamageHeartSprite(previousHealth);
+        //_collider2D.enabled = false;
+        //UpdateHealthBarUIDamaged(previousHealth);
         while (currentFlash < numberOfFlashes)
         {
             playerSprite.color = flashColor;
@@ -98,27 +102,40 @@ public class PlayerHealth : CollidableObject
             yield return new WaitForSeconds(flashDuration);
             currentFlash++;
         }
-        UpdateDamageBarUI(previousHealth);
-        previousHealth = currentPlayerHealth;
-        UpdateHeartSprite();
+        //UpdateDamageBarUI(previousHealth);
+        UpdateHealthBarUI();
         CheckIfPlayerHasDied();
-        _collider2D.enabled = true;
+        //_collider2D.enabled = true;
         hit = false;
     }
 
     protected override void OnCollided(GameObject collidedObject)
     {
-
-        if (collidedObject.GetComponent<EnemyBullet>() != null)
+        damageDealt = 0;
+        if (collidedObject.GetComponent<EnemyBullet>() == null)
         {
-            damageDealt = collidedObject.GetComponent<EnemyBullet>().damage;
+            return;
+        }
+
+        EnemyBullet bullet = collidedObject.GetComponent<EnemyBullet>();
+
+        if (bullet != null)
+        {
+
+            if (!(collidedObject.GetInstanceID() == lastBulletHitID))
+            {
+                lastBulletHitID = collidedObject.GetInstanceID();
+                damageDealt = bullet.damage;
+            }
+
+            //damageDealt = bullet.damage;
         }
         else
         {
             damageDealt = collidedObject.GetComponent<Enemy>().contactDamage;
         }
         currentPlayerHealth -= damageDealt;
-        UpdateHeartSprite();
+        UpdateHealthBarUI();
         StartCoroutine(FlashCoroutine());
         Debug.Log("Player hit with " + collidedObject.name);
     }
@@ -156,7 +173,7 @@ public class PlayerHealth : CollidableObject
         // Method resets the bar and smoothly disappears 
         //LeanTween.value(gameObject, previousHealth, currentPlayerHealth, 3);
         //healthWhiteSlider.value = currentPlayerHealth;
-        LeanTween.value(gameObject, previousHealth, currentPlayerHealth, 1).setEase(LeanTweenType.easeOutBack).setOnUpdate((float val) =>
+        LeanTween.value(gameObject, previousHealth, currentPlayerHealth, 1).setEase(LeanTweenType.easeOutQuad).setOnUpdate((float val) =>
         {
             healthWhiteSlider.value = val;
         });
@@ -176,86 +193,12 @@ public class PlayerHealth : CollidableObject
     void UpdateHealthBarUI()
     {
         healthSlider.value = currentPlayerHealth;
-    }
-
-    void UpdateHeartSprite()
-    {
-        UpdateHealthBarUI();
         healthFillBar.GetComponent<Image>().color = heartColor;
-        /*
-        lastFullHearts = fullHearts;
-        fullHearts = Mathf.FloorToInt(currentPlayerHealth / 2);
-        hasHalfHeart = !(currentPlayerHealth % 2 == 0);
-        damagedFullHearts = Mathf.FloorToInt(damageDealt / 2);
-        hasDamagedHalfHeart = !(damageDealt % 2 == 0);
-
-        Debug.Log("Full hearts: " + fullHearts);
-        Debug.Log("halfHeart?: " + hasHalfHeart);
-
-        // Calculating what hearts need to be displayed
-        // Initialise all hearts as empty first
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            hearts[i].sprite = emptyHeart;
-        }
-
-        for (int i = 0; i < fullHearts; i++)
-        {
-            hearts[i].sprite = fullHeart;
-        }
-
-        if (hasHalfHeart)
-        {
-            hearts[fullHearts].sprite = halfHeart;
-        }
-        */
     }
 
-    void UpdateDamageHeartSprite(int previousHealth)
+    void UpdateHealthBarUIDamaged(int previousHealth)
     {
         UpdateHealthBarUI();
         healthWhiteSlider.value = previousHealth;
-        //healthFillBar.gameObject.GetComponent<Image>().color = flashColor;
-
-
-
-
-        // Calculating how many white heart damaged sprites need to be displayed
-        /*
-        for (int i = Mathf.FloorToInt(currentPlayerHealth / 2); i > (Mathf.FloorToInt((currentPlayerHealth - damageDealt) / 2)); i--)
-        {
-            hearts[i].sprite = damagedFullHeart;
-            Debug.Log("FORLOOPENTERED");
-        }
-        */
-        /*
-        for (int i = fullHearts; i <= (fullHearts + damagedFullHearts); i++)
-        {
-            hearts[i].sprite = damagedFullHeart;
-        }
-
-        */
-        /*
-        Debug.Log("test: " + (lastFullHearts - damagedFullHearts - 1));
-        for (int i = lastFullHearts - 1 ; i >= (lastFullHearts - damagedFullHearts - 1); i--)
-        {
-            Debug.Log(i);
-            hearts[i].sprite = damagedFullHeart;
-        }
-        */
-
-        /*
-        if (hasDamagedHalfHeart)
-        {
-            if (hasHalfHeart)
-            {
-                hearts[fullHearts].sprite = halfHeartHalfDamaged;
-            }
-            else
-            {
-                hearts[fullHearts].sprite = damagedHalfHeart;
-            }
-        }
-        */
     }
 }

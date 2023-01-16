@@ -27,9 +27,17 @@ public class EnemyBullet : MonoBehaviour
             float distanceDelta = (transform.position - firePoint.transform.position).magnitude;
             if (distanceDelta > Range)
             {
+                //StartCoroutine(DestroyBullet());
                 Destroy(gameObject);
             }
         }
+    }
+
+    private IEnumerator DestroyBullet()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
@@ -39,7 +47,8 @@ public class EnemyBullet : MonoBehaviour
             if (hitInfo.tag.Equals("Shootable") || hitInfo.tag.Equals("Player"))
             {
                 Debug.Log(hitInfo.name + " was hit!");
-                Destroy(gameObject, 0.05f);
+                //StartCoroutine(DestroyBullet());
+                Destroy(gameObject, 1f);
             }
         }
     }

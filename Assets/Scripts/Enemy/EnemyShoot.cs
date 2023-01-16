@@ -13,7 +13,7 @@ public class EnemyShoot : MonoBehaviour
     public Transform entityTransform;
     public Transform playerTransform;
     public GameObject bulletPrefab;
-    private AIDestinationSetter _AIDestinationSetter;
+    //private AIDestinationSetter _AIDestinationSetter;
     public Transform enemyBulletHolder;
     #endregion
 
@@ -68,8 +68,8 @@ public class EnemyShoot : MonoBehaviour
     private void Awake()
     {
         playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        _AIDestinationSetter = GetComponent<AIDestinationSetter>();
-        _AIDestinationSetter.target = playerTransform;
+        //_AIDestinationSetter = GetComponent<AIDestinationSetter>();
+        //_AIDestinationSetter.target = playerTransform;
         enemyBulletHolder = GameObject.Find("EnemyBulletHolder").GetComponent<Transform>();
     }
 
@@ -184,7 +184,8 @@ public class EnemyShoot : MonoBehaviour
             {
                 onSight = false;
             }
-        } else
+        }
+        else
         {
             Debug.Log("No collider hit?");
         }

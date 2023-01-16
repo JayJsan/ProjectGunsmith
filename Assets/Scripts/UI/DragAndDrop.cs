@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
 {
-    public enum partTypes { Barrel, Magazine, Trigger, Sight, Stock, Special, Dropzone}
+    public enum partTypes { Barrel, Magazine, Trigger, Sight, Stock, Special, Dropzone }
     private bool isDragging;
     private bool isTouching;
     public bool isLocked;
@@ -14,7 +14,7 @@ public class DragAndDrop : MonoBehaviour
 
     [SerializeField]
     private DropZone dz;
-    private Shooting playerShooting;
+    private PlayerShoot playerShooting;
 
     public string debug;
 
@@ -28,7 +28,7 @@ public class DragAndDrop : MonoBehaviour
     #endregion
 
     public partTypes partType;
-    
+
     private void Start()
     {
         #region DROP ZONE GET COMPONENT
@@ -80,7 +80,7 @@ public class DragAndDrop : MonoBehaviour
         #endregion
 
         dz = GameObject.FindWithTag("DropZone").GetComponent<DropZone>();
-        playerShooting = GameObject.Find("Player").GetComponent<Shooting>();
+        playerShooting = GameObject.Find("Player").GetComponent<PlayerShoot>();
         playerShooting.enableShoot = true;
     }
 
@@ -105,12 +105,12 @@ public class DragAndDrop : MonoBehaviour
 
     public void OnMouseOver()
     {
-        
+
     }
 
     public void OnMouseExit()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -122,7 +122,7 @@ public class DragAndDrop : MonoBehaviour
             transform.Translate(mousePosition);
         }
     }
-    
+
 
     void CheckGunTypeAndCollisions()
     {
@@ -175,9 +175,10 @@ public class DragAndDrop : MonoBehaviour
             default:
                 if (gunPartCollider.IsTouching(dz.dropZoneCollider))
                 {
-                    
+
                     isTouching = true;
-                } else
+                }
+                else
                 {
                     isTouching = false;
                 }
@@ -188,7 +189,7 @@ public class DragAndDrop : MonoBehaviour
         // If there is an existing gun part, drop existing gun part and lock new gun part onto gun part holder
         // If gun part hovering over actual drop zone then unlock gun part from position and drop gun part
         // Use switch case(?)
-        
+
         // Gun part should be a prefab(?) - scale down when dropped and scale up when picked up
         // Gun part should have a reference to a scriptable object with its respective stats
         // Hovering gun part in its dropped state should bring up a tooltip
