@@ -32,7 +32,8 @@ public class PlayerHealth : CollidableObject
     public Slider healthWhiteSlider;
     public GameObject healthFillBar;
     public int lastBulletHitID;
-    public float damageBarCountdown = 2;
+    public float damageBarCountdown = 1.5f;
+    private float countdown = 1.5f;
     public bool hit = false;
     private bool hasRun = false;
 
@@ -61,9 +62,9 @@ public class PlayerHealth : CollidableObject
     {
         if (!isPlayerDead)
         {
-            if (damageBarCountdown > 0)
+            if (countdown > 0)
             {
-                damageBarCountdown -= Time.deltaTime;
+                countdown -= Time.deltaTime;
             }
             else
             {
@@ -81,7 +82,7 @@ public class PlayerHealth : CollidableObject
                 if (!hit)
                 {
                     //hit = true;
-                    damageBarCountdown = 2;
+                    countdown = damageBarCountdown;
                     hasRun = false;
                     OnCollided(o.gameObject);
                 }

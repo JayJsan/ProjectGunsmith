@@ -433,6 +433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 280925730}
+  - component: {fileID: 280925731}
   m_Layer: 0
   m_Name: EnemyBulletHolder
   m_TagString: Untagged
@@ -455,6 +456,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &280925731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280925729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3269ddf87e49f942a916156aae67981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountToPool: 20
+  maxPoolableObjects: 30
+  canExpand: 1
+  hasHolder: 1
+  objectPoolHolder: {fileID: 280925729}
+  prefab: {fileID: 3448145220456847306, guid: 360730683285cc54a8fcc6a5d36949a2, type: 3}
 --- !u!1 &299522294
 GameObject:
   m_ObjectHideFlags: 0
@@ -10672,7 +10691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &790398319241347309
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10779,6 +10798,7 @@ MonoBehaviour:
   entityTransform: {fileID: 790398319241347310}
   playerTransform: {fileID: 2616820434276435779, guid: 758579dc0f70ab94db4e690bde37ee6c, type: 3}
   bulletPrefab: {fileID: 3448145220456847306, guid: 360730683285cc54a8fcc6a5d36949a2, type: 3}
+  bulletPool: {fileID: 0}
   enemyBulletHolder: {fileID: 280925730}
   bulletForce: 7
   spreadAngle: 0.912
@@ -11064,7 +11084,7 @@ PrefabInstance:
       objectReference: {fileID: 1811959595}
     - target: {fileID: 2616820434276435784, guid: 758579dc0f70ab94db4e690bde37ee6c, type: 3}
       propertyPath: damageBarCountdown
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2616820434276435784, guid: 758579dc0f70ab94db4e690bde37ee6c, type: 3}
       propertyPath: currentPlayerHealth

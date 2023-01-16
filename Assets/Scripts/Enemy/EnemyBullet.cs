@@ -6,18 +6,29 @@ public class EnemyBullet : MonoBehaviour
 {
     #region COMPONENTS
     public GameObject firePoint;
+    private SpriteRenderer bulletSprite;
     #endregion
 
     #region Gun Stat Variables
     public int damage = 1;
     public float Range = 10f;
     #endregion
+    private void Awake()
+    {
+        bulletSprite = GetComponent<SpriteRenderer>();
+    }
     private void Start()
     {
         if (GameObject.Find("Enemy/GunPivot/EnemyFirePoint") != null)
         {
             firePoint = GameObject.Find("Enemy/GunPivot/EnemyFirePoint");
         }
+
+    }
+
+    private void OnEnable()
+    {
+        bulletSprite.color = new Color(1f, 1f, 1f, 1f);
     }
 
     void FixedUpdate()
@@ -28,17 +39,20 @@ public class EnemyBullet : MonoBehaviour
             if (distanceDelta > Range)
             {
                 //StartCoroutine(DestroyBullet());
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
 
     private IEnumerator DestroyBullet()
     {
-        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
-        yield return new WaitForSeconds(1);
-        Destroy(gameObject);
+        bulletSprite.color = new Color(1f, 1f, 1f, 0f);
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
+        //Destroy(gameObject);
     }
+
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
@@ -47,8 +61,8 @@ public class EnemyBullet : MonoBehaviour
             if (hitInfo.tag.Equals("Shootable") || hitInfo.tag.Equals("Player"))
             {
                 Debug.Log(hitInfo.name + " was hit!");
-                //StartCoroutine(DestroyBullet());
-                Destroy(gameObject, 1f);
+                StartCoroutine(DestroyBullet());
+                //Destroy(gameObject, 1f);
             }
         }
     }

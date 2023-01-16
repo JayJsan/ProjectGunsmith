@@ -13,7 +13,8 @@ public class EnemyShoot : MonoBehaviour
     public Transform entityTransform;
     public Transform playerTransform;
     public GameObject bulletPrefab;
-    //private AIDestinationSetter _AIDestinationSetter;
+    public ObjectPool bulletPool;
+    private AIDestinationSetter _AIDestinationSetter;
     public Transform enemyBulletHolder;
     #endregion
 
@@ -68,9 +69,10 @@ public class EnemyShoot : MonoBehaviour
     private void Awake()
     {
         playerTransform = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        //_AIDestinationSetter = GetComponent<AIDestinationSetter>();
-        //_AIDestinationSetter.target = playerTransform;
+        _AIDestinationSetter = GetComponent<AIDestinationSetter>();
+        _AIDestinationSetter.target = playerTransform;
         enemyBulletHolder = GameObject.Find("EnemyBulletHolder").GetComponent<Transform>();
+        bulletPool = enemyBulletHolder.GetComponent<ObjectPool>();
     }
 
     private void Start()
@@ -122,7 +124,15 @@ public class EnemyShoot : MonoBehaviour
             #endregion
 
             // Create bullet
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, enemyBulletHolder);
+            //GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, enemyBulletHolder);
+
+            GameObject bullet = bulletPool.GetPooledObject();
+            if (bullet == null) { return; }
+            bullet.transform.SetPositionAndRotation(firePoint.position, firePoint.rotation);
+            bullet.SetActive(true);
+
+
+
             Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
 
             // Modify Damage
