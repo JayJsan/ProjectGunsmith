@@ -167,8 +167,10 @@ MonoBehaviour:
   baseGoldDrop: 10
   randomGoldDrop: 1
   randomDamageOn: 1
-  randomDamage: 5
+  randomDamage: 0
+  waveSpawner: {fileID: 0}
   randomGoldRange: 1000
+  _collider: {fileID: 0}
 --- !u!114 &790398317595156774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +188,7 @@ MonoBehaviour:
   entityTransform: {fileID: 790398317595156793}
   playerTransform: {fileID: 2616820434276435779, guid: 758579dc0f70ab94db4e690bde37ee6c, type: 3}
   bulletPrefab: {fileID: 3448145220456847306, guid: 360730683285cc54a8fcc6a5d36949a2, type: 3}
+  bulletPool: {fileID: 0}
   enemyBulletHolder: {fileID: 0}
   bulletForce: 7
   spreadAngle: 0.912
@@ -195,7 +198,7 @@ MonoBehaviour:
   maxAmmo: 10
   currentAmmo: 10
   reloadTime: 1
-  numberOfBullets: 3
+  numberOfBullets: 1
   isAuto: 1
   enableShoot: 0
   isReloading: 0

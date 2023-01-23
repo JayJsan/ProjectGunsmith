@@ -78,6 +78,9 @@ public class WaveSpawner : MonoBehaviour
 
         waveText.gameObject.SetActive(true);
         waveText.text = waves[nextWave].name;
+        Shop.SetActive(false);
+        ShopUI.SetActive(false);
+
 
         if (state == SpawnState.WAITING)
         {

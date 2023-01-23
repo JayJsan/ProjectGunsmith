@@ -16,6 +16,7 @@ public class ObjectPool : MonoBehaviour
     private List<GameObject> pooledObjects = new List<GameObject>();
     public int amountToPool = 20;
     public int maxPoolableObjects = 30;
+    public int pooledObjectsCount = 0;
     public bool canExpand = true;
     public bool hasHolder = true;
     [SerializeField] private GameObject objectPoolHolder;
@@ -39,10 +40,12 @@ public class ObjectPool : MonoBehaviour
             obj.SetActive(false);
             pooledObjects.Add(obj);
         }
+        pooledObjectsCount = pooledObjects.Count;
     }
 
     public GameObject GetPooledObject()
     {
+        pooledObjectsCount = pooledObjects.Count;
         for (int i = 0; i < pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
@@ -72,6 +75,7 @@ public class ObjectPool : MonoBehaviour
             pooledObjects.Add(obj);
             return obj;
         }
+        pooledObjectsCount = pooledObjects.Count;
         return null;
     }
 }
