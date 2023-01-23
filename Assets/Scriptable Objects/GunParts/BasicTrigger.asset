@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e4184b6c0b81d64497b53d4dacd7b5a, type: 3}
-  m_Name: BasicStock
+  m_Name: BasicTrigger
   m_EditorClassIdentifier: 
-  id: 3
-  displayName: Basic Stock
+  id: 5
+  displayName: Basic Trigger
   partSprite: {fileID: 0}
-  prefab: {fileID: 563484137639633565, guid: aa769a9d95a273a4e9a4c4a5b80c95f4, type: 3}
-  partType: 3
+  prefab: {fileID: 3617184756311228203, guid: a2a88731279fede44bbd99eb0eb2dc2b, type: 3}
+  partType: 1
   bulletForce: 0
   accuracyMultiplier: 0
   damage: 0
   range: 0
-  fireRateMultiplier: 0
+  fireRateMultiplier: 1
   maxAmmo: 1
   reloadTime: 0
   numberOfBullets: 0
   isAuto: 0
-  cost: 35
-  randomCostRange: 17
+  cost: 147
+  randomCostRange: 12

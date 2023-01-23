@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e4184b6c0b81d64497b53d4dacd7b5a, type: 3}
-  m_Name: ShotgunBarrel
+  m_Name: BasicBarrel
   m_EditorClassIdentifier: 
-  id: 5
-  displayName: Shotgun Barrel
-  partSprite: {fileID: 0}
-  prefab: {fileID: 6864873734680788736, guid: f943d276d08c010468e6a8e720c93bcb, type: 3}
+  id: 1
+  displayName: Basic Barrel
+  partSprite: {fileID: -1756748940, guid: 9f01e05ac8afd304a82a88a12623f255, type: 3}
+  prefab: {fileID: 5177704558707659850, guid: 1ca26549a230c014d946240695401aba, type: 3}
   partType: 0
-  bulletForce: 25
-  accuracyMultiplier: -0.641
+  bulletForce: 7
+  accuracyMultiplier: 0.85
   damage: 0
-  range: 8
-  fireRateMultiplier: 0.457
+  range: 4
+  fireRateMultiplier: 1
   maxAmmo: 0
   reloadTime: 0
-  numberOfBullets: 8
+  numberOfBullets: 1
   isAuto: 0
-  cost: 34
-  randomCostRange: 13
+  cost: 419
+  randomCostRange: 24

@@ -122,14 +122,16 @@ public class PlayerHealth : CollidableObject
 
         if (bullet != null)
         {
+            /*
+            This handles bullet damage if calculated from player
 
             if (!(collidedObject.GetInstanceID() == lastBulletHitID))
             {
                 lastBulletHitID = collidedObject.GetInstanceID();
                 damageDealt = bullet.damage;
             }
+            */
 
-            //damageDealt = bullet.damage;
         }
         else
         {
@@ -138,7 +140,7 @@ public class PlayerHealth : CollidableObject
         currentPlayerHealth -= damageDealt;
         UpdateHealthBarUI();
         StartCoroutine(FlashCoroutine());
-        Debug.Log("Player hit with " + collidedObject.name);
+        Debug.Log("Player collided with" + collidedObject.name);
     }
 
     public void ResetPlayerHealth()
@@ -201,5 +203,12 @@ public class PlayerHealth : CollidableObject
     {
         UpdateHealthBarUI();
         healthWhiteSlider.value = previousHealth;
+    }
+
+    public void TakeDamage(int amountDealt)
+    {
+        currentPlayerHealth -= amountDealt;
+        UpdateHealthBarUI();
+        StartCoroutine(FlashCoroutine());
     }
 }
