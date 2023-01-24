@@ -54,6 +54,8 @@ public class InventoryManager : MonoBehaviour
 
         shootManager.ResetStats();
         UpdateStats();
+        UpdateStatsUI();
+        UpdateGold();
         CloseInventory();
 
     }
@@ -117,6 +119,10 @@ public class InventoryManager : MonoBehaviour
                 equippedSpecials.Add(newGunPart); // Redo later - Should only be 1 able to equipped unless other items are unlocked(?)
                 gunPartChange = true;
                 break;
+            case (PartItemData.GunPartType.Empty):
+                Debug.Log("dawg idk what to do here, u picked up an empty part");
+                break;
+
         }
     }
 
@@ -140,8 +146,8 @@ public class InventoryManager : MonoBehaviour
             Debug.Log("this guy broke");
             return false;
         }
-        UpdateGold();
         goldAmount -= gold;
+        UpdateGold();
         return true;
     }
     #endregion

@@ -10,12 +10,15 @@ public class Bullet : MonoBehaviour
 
     #region Gun Stat Variables
     public int damage = 25;
+    public int piercing = 1;
+    private int amountPierced = 0;
     public float Range = 10f;
     #endregion
 
     private void Start()
     {
         firePoint = GameObject.FindWithTag("FirePoint");
+        amountPierced = 0;
     }
 
     void FixedUpdate()
@@ -42,10 +45,14 @@ public class Bullet : MonoBehaviour
 
             if (enemy != null)
             {
+                amountPierced++;
                 enemy.TakeDamage(damage);
             }
             //Destroy(gameObject);
-            gameObject.SetActive(false); // FOR OUR GAMEOBJECT POOLIGN SYSTEM
+            if (amountPierced >= piercing)
+            {
+                gameObject.SetActive(false); // FOR OUR GAMEOBJECT POOLIGN SYSTEM
+            }
         }
     }
 }

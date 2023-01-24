@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ShopItemLogic : MonoBehaviour
 {
-    public GameObject[] possibleShopItems;
-    public GameObject[] currentShopItems;
+    public GameObject[] AllPossibleShopItems;
+    public GameObject[] currentPossibleShopItems;
+    public GameObject[] shopSlots;
     public InventoryManager playerInventoryManager;
     public ShopUILogic shopUI;
 
@@ -13,6 +14,11 @@ public class ShopItemLogic : MonoBehaviour
     void Start()
     {
         GetComponent<ShopUILogic>();
+    }
+
+    private void OnEnable()
+    {
+        ShuffleShop();
     }
 
     // This method is used by the ShopTriggerLogic script
@@ -37,6 +43,22 @@ public class ShopItemLogic : MonoBehaviour
         {
             // this guy broke fr
             shopUI.PlayerIsBroke();
+        }
+    }
+
+    public void ShuffleShop()
+    {
+        // need to implement a way to make sure the same item isnt displayed 
+        //
+        // test pseudo code
+        // create list of items
+        // pick random item
+        // remove from list
+        //
+
+        foreach (GameObject slot in shopSlots)
+        {
+            slot.GetComponent<ShopTriggerLogic>().ChangeShopItem(currentPossibleShopItems[Random.Range(0, currentPossibleShopItems.Length - 1)]);
         }
     }
 }

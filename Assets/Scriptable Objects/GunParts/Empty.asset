@@ -16,7 +16,7 @@ MonoBehaviour:
   displayName: Empty Slot
   partSprite: {fileID: 0}
   prefab: {fileID: 0}
-  partType: 0
+  partType: 6
   bulletForce: 0
   accuracyMultiplier: 0
   damage: 0
@@ -28,3 +28,4 @@ MonoBehaviour:
   isAuto: 0
   cost: 0
   randomCostRange: 0
+  piercingAmount: 0

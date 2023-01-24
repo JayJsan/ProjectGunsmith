@@ -7,7 +7,7 @@ public class PartItemData : ScriptableObject
 {
     public enum GunPartType
     {
-        Barrel, Trigger, Magazine, Stock, Sight, Special
+        Barrel, Trigger, Magazine, Stock, Sight, Special, Empty
     }
     public string id;
     public string displayName;
@@ -55,7 +55,9 @@ public class PartItemData : ScriptableObject
     public bool isAuto = false;
 
     public int cost = 0;
-    [Range(0,100)]
+    [Range(0, 100)]
     public int randomCostRange = 0;
+
+    public int piercingAmount = 0;
     #endregion
 }

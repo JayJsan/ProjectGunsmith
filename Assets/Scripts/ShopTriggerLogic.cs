@@ -38,6 +38,7 @@ public class ShopTriggerLogic : InteractableObject
 
     protected override void OnCollided(GameObject collidedObject)
     {
+        CheckShopItem();
         if (shopItem == null)
         {
             return;
@@ -61,11 +62,12 @@ public class ShopTriggerLogic : InteractableObject
         if (!hasInteracted)
         {
             hasInteracted = true;
-
             if (!hasBought)
-            {            
+            {
                 // pass through shopitem
                 shopItemLogic.PlayerBuy(shopItem);
+                hasBought = true;
+                _collider2D.enabled = false;
             }
 
 
@@ -84,7 +86,29 @@ public class ShopTriggerLogic : InteractableObject
 
     public void ChangeShopItem(GameObject newShopItem)
     {
-        shopItem = newShopItem;
+        foreach (Transform child in transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        shopItem = Instantiate(newShopItem, transform.position, Quaternion.identity, transform);
+
+        if (shopItem.GetComponent<Collider2D>() != null)
+        {
+            // disables actual gun part collider so you can't grab it off table for free
+            shopItem.GetComponent<Collider2D>().enabled = false;
+        }
+
+
         hasBought = false;
+        _collider2D.enabled = true;
+    }
+
+    private void CheckShopItem()
+    {
+        if (this.gameObject.transform.GetChild(0).gameObject != null)
+        {
+            shopItem = this.gameObject.transform.GetChild(0).gameObject;
+        }
     }
 }

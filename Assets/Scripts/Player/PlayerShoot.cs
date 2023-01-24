@@ -68,6 +68,11 @@ public class PlayerShoot : MonoBehaviour
     private int defaultNumberOfBullets = 1;
     public int numberOfBullets = 0;
 
+    // Piercing - Allows the bullet to damage through an enemy and disappears after x amount of enemy collisions.
+    public int piercingAmount = 0;
+    private int defaultPiercingAmount = 0;
+    private int currentPiercingAmount = 0;
+
     // Determines if weapon is semi-auto or automatic
     public bool isAuto = false;
     #endregion
@@ -148,12 +153,15 @@ public class PlayerShoot : MonoBehaviour
             // IMPLEMENTING OBJECT POOL SYSTEM -----------
 
             Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
-
+            Bullet bulletStats = bullet.GetComponent<Bullet>();
             // Modify Damage
-            bullet.GetComponent<Bullet>().damage = damage;
+            bulletStats.damage = damage;
 
             // Modify Range
-            bullet.GetComponent<Bullet>().Range = range;
+            bulletStats.Range = range;
+
+            // Modify Piercing
+            bulletStats.piercing = piercingAmount;
 
             // Add force (speed of bullet)
             rbBullet.AddForce(firePoint.right * bulletForce, ForceMode2D.Impulse);
@@ -240,6 +248,7 @@ public class PlayerShoot : MonoBehaviour
         this.maxAmmo = defaultMaxAmmo;
         this.reloadTime = defaultReloadTime;
         this.numberOfBullets = defaultNumberOfBullets;
+        this.piercingAmount = defaultPiercingAmount;
         this.isAuto = false;
     }
 
@@ -287,6 +296,12 @@ public class PlayerShoot : MonoBehaviour
     public void ChangeNumberOfBullets(int newNumberOfBullets)
     {
         this.numberOfBullets = newNumberOfBullets;
+    }
+
+    public void ChangePiercing(int newPiercing)
+    {
+        this.piercingAmount = currentPiercingAmount + newPiercing;
+        currentPiercingAmount += newPiercing;
     }
     #endregion
 }

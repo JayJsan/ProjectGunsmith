@@ -3169,8 +3169,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6516b1176d773f47a5e5336cf93de6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleShopItems: []
-  currentShopItems: []
+  AllPossibleShopItems: []
+  currentPossibleShopItems:
+  - {fileID: 5177704558707659850, guid: 1ca26549a230c014d946240695401aba, type: 3}
+  - {fileID: 5078503240136237577, guid: 205335cec0630f54cbe1aa74bdbf6c8e, type: 3}
+  - {fileID: 6251508270009763350, guid: eef88472055624b419cef9b0a97301a4, type: 3}
+  - {fileID: 563484137639633565, guid: aa769a9d95a273a4e9a4c4a5b80c95f4, type: 3}
+  - {fileID: 3617184756311228203, guid: a2a88731279fede44bbd99eb0eb2dc2b, type: 3}
+  - {fileID: 6864873734680788736, guid: f943d276d08c010468e6a8e720c93bcb, type: 3}
+  - {fileID: 6096130631690195935, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
+  shopSlots:
+  - {fileID: 1699539826}
+  - {fileID: 1171159338}
+  - {fileID: 855711225}
   playerInventoryManager: {fileID: 885167880}
   shopUI: {fileID: 796204634}
 --- !u!1 &820853158
@@ -3621,6 +3632,7 @@ MonoBehaviour:
   currentAmmo: 0
   reloadTime: 1
   numberOfBullets: 0
+  piercingAmount: 0
   isAuto: 1
   enableShoot: 0
   isReloading: 0
@@ -3693,7 +3705,7 @@ MonoBehaviour:
   equippedStock: {fileID: 11400000, guid: 67003ca1ea0d4064a940198689f20625, type: 2}
   equippedSight: {fileID: 11400000, guid: 2a5c25a9d6942b24c837406da16fd3d4, type: 2}
   equippedSpecials: []
-  goldAmount: 0
+  goldAmount: 4217
   partsUI: {fileID: 26901882}
   statsUI: {fileID: 504756849}
   goldUI: {fileID: 1882785201}
@@ -11603,6 +11615,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 13.969564, y: 14.016216}
   m_EdgeRadius: 0
+--- !u!1001 &6254268488303561708
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 38449497175064334, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 38449497175064334, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.8257
+      objectReference: {fileID: 0}
+    - target: {fileID: 38449497175064334, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.9943
+      objectReference: {fileID: 0}
+    - target: {fileID: 38449497175064334, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.6773764
+      objectReference: {fileID: 0}
+    - target: {fileID: 38449497175064334, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 38449497175064334, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38449497175064334, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38449497175064334, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38449497175064334, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38449497175064334, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 38449497175064334, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6096130631690195935, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
+      propertyPath: m_Name
+      value: Empty
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bf0b0b86a572e39489c6d07d9fe4c913, type: 3}
 --- !u!1001 &6596039806969594193
 PrefabInstance:
   m_ObjectHideFlags: 0
