@@ -58,12 +58,17 @@ public class EnemyBullet : MonoBehaviour
     {
         if (hitInfo != null)
         {
-            if (hitInfo.tag.Equals("Shootable") || hitInfo.tag.Equals("Player"))
+            if (hitInfo.tag.Equals("Player"))
             {
                 Debug.Log(hitInfo.name + " was hit!");
                 hitInfo.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
                 StartCoroutine(DestroyBullet());
                 //Destroy(gameObject, 1f);
+            }
+            else if (hitInfo.tag.Equals("Shootable"))
+            {
+                Debug.Log(hitInfo.name + " was hit!");
+                StartCoroutine(DestroyBullet());
             }
         }
     }

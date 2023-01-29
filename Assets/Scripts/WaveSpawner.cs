@@ -28,7 +28,7 @@ public class WaveSpawner : MonoBehaviour
 
     public Wave[] waves;
     public int nextWave = 0;
-
+    public GameObject enemyHolder;
     public Transform[] spawnPoints;
 
     public int enemiesAlive = 0;
@@ -206,7 +206,7 @@ public class WaveSpawner : MonoBehaviour
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
         // Spawn enemy
-        Instantiate(_enemy, _sp.position, _sp.rotation);
+        Instantiate(_enemy, _sp.position, _sp.rotation, enemyHolder.transform);
 
     }
 
@@ -238,5 +238,15 @@ public class WaveSpawner : MonoBehaviour
     public void AddEnemiesAlive(int amount)
     {
         enemiesAlive += amount;
+    }
+
+    public void CheckPlayerDead()
+    {
+        // hard coded trash
+        if (GameObject.Find("Player").GetComponent<PlayerHealth>().isPlayerDead)
+        {
+            state = SpawnState.START;
+            Time.timeScale = 0;
+        }
     }
 }

@@ -18,7 +18,7 @@ public class PlayerHealth : CollidableObject
 
     public bool isPlayerDead = false;
     private bool hasDied = false;
-    private GameObject loseText;
+    private GameObject loseScreen;
 
     [Header("Invincibiltiy Frames Stuff")]
     public Color flashColor;
@@ -44,12 +44,12 @@ public class PlayerHealth : CollidableObject
         // lastFullHearts = Mathf.FloorToInt(currentPlayerHealth / 2);
         // fullHearts = Mathf.FloorToInt(currentPlayerHealth / 2);
         _collider2D = GetComponent<Collider2D>();
-        loseText = GameObject.Find("Canvas/LoseScreen/LoseText");
+        loseScreen = GameObject.Find("Canvas/LoseScreen");
         // hearts[0] = GameObject.Find("Canvas/HealthDisplay/Heart1").GetComponent<Image>();
         // hearts[1] = GameObject.Find("Canvas/HealthDisplay/Heart2").GetComponent<Image>();
         // hearts[2] = GameObject.Find("Canvas/HealthDisplay/Heart3").GetComponent<Image>();
         //healthSlider = GameObject.Find("Canvas/HealthDisplay").GetComponent<Slider>();
-        loseText.SetActive(false);
+        loseScreen.SetActive(false);
 
         healthSlider.maxValue = maxPlayerHealth;
         healthWhiteSlider.value = maxPlayerHealth;
@@ -164,7 +164,7 @@ public class PlayerHealth : CollidableObject
             if (!hasDied)
             {
                 hasDied = true;
-                loseText.SetActive(true);
+                loseScreen.SetActive(true);
                 playerSprite.color = flashColor;
                 transform.Rotate(new Vector3(0, 0, 90));
             }
