@@ -188,6 +188,7 @@ public class InventoryManager : MonoBehaviour
         s.ChangeFireRate(equippedBarrel.fireRateMultiplier);
         s.ChangeSpreadAngle(equippedBarrel.accuracyMultiplier);
         s.ChangeRange(equippedBarrel.range);
+        s.ChangePiercing(equippedBarrel.piercingAmount);
     }
 
     void UpdateTrigger(PlayerShoot s)
@@ -204,6 +205,7 @@ public class InventoryManager : MonoBehaviour
         s.ChangeDamage(equippedMagazine.damage);
         s.ChangeRange(equippedMagazine.range);
         s.ChangeReloadTime(equippedMagazine.reloadTime);
+        s.ChangeSize(equippedMagazine.sizeMultiplier);
     }
 
     void UpdateStock(PlayerShoot s)
@@ -221,6 +223,8 @@ public class InventoryManager : MonoBehaviour
     void UpdateSpecial(PlayerShoot s)
     {
         // Special affects everything depending on what it is.
+        // 30/01/23 - just realised that this won't work at all BAHAHAHAHAHA
+        // It's just gonna apply only the last equipped special stats.
         foreach (PartItemData equippedSpecial in equippedSpecials)
         {
             s.ChangeDamage(equippedSpecial.damage);
@@ -231,6 +235,8 @@ public class InventoryManager : MonoBehaviour
             s.ChangeReloadTime(equippedSpecial.reloadTime);
             s.ChangeSpeed(equippedSpecial.bulletForce);
             s.ChangeSpreadAngle(equippedSpecial.accuracyMultiplier);
+            s.ChangeSize(equippedSpecial.sizeMultiplier);
+
         }
     }
     #endregion

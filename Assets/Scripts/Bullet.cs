@@ -13,12 +13,20 @@ public class Bullet : MonoBehaviour
     public int piercing = 1;
     private int amountPierced = 0;
     public float Range = 10f;
+
+    public int lastEnemyHit = 0;
     #endregion
 
     private void Start()
     {
         firePoint = GameObject.FindWithTag("FirePoint");
+
+    }
+
+    private void OnEnable()
+    {
         amountPierced = 0;
+        lastEnemyHit = 0;
     }
 
     void FixedUpdate()
@@ -45,8 +53,13 @@ public class Bullet : MonoBehaviour
 
             if (enemy != null)
             {
-                amountPierced++;
-                enemy.TakeDamage(damage);
+
+                if (enemy.GetInstanceID() != lastEnemyHit)
+                {
+                    amountPierced++;
+                    enemy.TakeDamage(damage);
+                    lastEnemyHit = enemy.GetInstanceID();
+                }
             }
             //Destroy(gameObject);
             if (amountPierced >= piercing)

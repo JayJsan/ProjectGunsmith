@@ -13,6 +13,8 @@ public class EnemyBullet : MonoBehaviour
     public int damage = 1;
     public float Range = 10f;
     #endregion
+    private bool hasHit = false;
+
     private void Awake()
     {
         bulletSprite = GetComponent<SpriteRenderer>();
@@ -28,6 +30,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnEnable()
     {
+        hasHit = false;
         bulletSprite.color = new Color(1f, 1f, 1f, 1f);
     }
 
@@ -61,7 +64,11 @@ public class EnemyBullet : MonoBehaviour
             if (hitInfo.tag.Equals("Player"))
             {
                 Debug.Log(hitInfo.name + " was hit!");
-                hitInfo.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+                if (!hasHit)
+                {
+                    hitInfo.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+                    hasHit = true;
+                }
                 StartCoroutine(DestroyBullet());
                 //Destroy(gameObject, 1f);
             }

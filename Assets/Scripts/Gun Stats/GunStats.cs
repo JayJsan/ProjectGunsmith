@@ -9,64 +9,65 @@ public class GunStats : MonoBehaviour
     // If I use only one variable to keep track of the stats, I cannot reset it properly?? god i need to do this way better
     //  -- I will refactor this one day but for now it works for now --
     //
-    // Speed
-    private float defaultBulletForce = 0f;
+
     [Header("Gun Stats")]
+    // Speed
+    protected float defaultBulletForce = 0f;
     public float bulletForce = 0f;
 
     // Accuracy
     // Default is 0.5f:
     // 1f - 100% accurate
     // 0f - Bullet spread spans across a fixed angle.
-    private float defaultSpreadAngle = 0.5f;
+    protected float defaultSpreadAngle = 0.5f;
     [Range(0f, 1f)]
     public float spreadAngle = 0.5f;
-    private float defaultAccuracyMultiplier = 0f; // (defaultMultiplier + 1) * spread angle = no change
+    protected float defaultAccuracyMultiplier = 0f; // (defaultMultiplier + 1) * spread angle = no change
     public float currentAccuracyMultiplier = 0f;
     // Damage
     // Self-explanatory
-    private int defaultDamage = 0;
-    private int currentDamage = 0;
+    protected int defaultDamage = 0;
+    protected int currentDamage = 0;
     public int damage = 0;
 
     // Range
     // Bullet "range" but mechanicall is the bullet lifetime. Will probably change later on.
-    private float defaultRange = 1f;
-    private float currentRange = 0f;
+    protected float defaultRange = 1f;
+    protected float currentRange = 0f;
     public float range = 0f;
 
     // Fire Rate
     // Default is 1: Being 1 bullet per second. fireRate is measured in time between seconds
     // Bullets per second is well bullets per second.
-    private float defaultFireRate = 1f;
-    private float defaultBulletsPerSecond = 1f;
+    protected float defaultFireRate = 1f;
+    protected float defaultBulletsPerSecond = 1f;
     [Range(0f, 2f)]
     public float fireRate = 1f;
     public float currentBulletsPerSecond = 1f;
 
     // Ammo
-    private int defaultMaxAmmo = 0;
+    protected int defaultMaxAmmo = 0;
     public int maxAmmo = 0;
     public int currentAmmo = 0;
 
     // Reload Time
     // Default = 1f - Reloads in one second.
-    private float defaultReloadTime = 1f;
+    protected float defaultReloadTime = 1f;
     public float reloadTime = 1f;
 
     // # of bullets shot per fire.
-    private int defaultNumberOfBullets = 1;
+    protected int defaultNumberOfBullets = 1;
     public int numberOfBullets = 0;
 
     // Piercing - Allows the bullet to damage through an enemy and disappears after x amount of enemy collisions.
     public int piercingAmount = 0;
-    private int defaultPiercingAmount = 0;
-    private int currentPiercingAmount = 0;
+    protected int defaultPiercingAmount = 0;
+    protected int currentPiercingAmount = 0;
 
     // Size - Changes the size of the bullet 
     public float size = 1f;
-    private float defaultSize = 1f;
-    private float currentSize = 1f;
+    protected float defaultSize = 1f;
+    protected float currentSize = 1f;
 
     // Determines if weapon is semi-auto or automatic
     public bool isAuto = false;
