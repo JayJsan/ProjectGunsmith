@@ -148,4 +148,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 3448145220456847306}
   damage: 25
+  piercing: 1
   Range: 10

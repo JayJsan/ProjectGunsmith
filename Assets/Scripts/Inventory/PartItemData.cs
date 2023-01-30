@@ -59,5 +59,7 @@ public class PartItemData : ScriptableObject
     public int randomCostRange = 0;
 
     public int piercingAmount = 0;
+
+    public float sizeMultiplier = 0f;
     #endregion
 }
