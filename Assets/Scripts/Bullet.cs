@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     #region COMPONENTS
     public GameObject firePoint;
+    public Animator bulletAnimator;
     #endregion
 
     #region Gun Stat Variables
@@ -20,13 +21,16 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         firePoint = GameObject.FindWithTag("FirePoint");
-
+        bulletAnimator = GetComponent<Animator>();
+        bulletAnimator.SetTrigger("idle");
     }
 
     private void OnEnable()
     {
         amountPierced = 0;
         lastEnemyHit = 0;
+        bulletAnimator.SetTrigger("idle");
+        GetComponent<Collider2D>().enabled = true;
     }
 
     void FixedUpdate()
@@ -41,9 +45,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.tag.Equals("Shootable") || hitInfo.tag.Equals("Enemy"))
+        if (hitInfo.tag.Equals("Enemy"))
         {
-            Debug.Log(hitInfo.name + " was hit!");
             Enemy enemy = null;
 
             if (hitInfo.GetComponent<Enemy>() != null)
@@ -64,8 +67,24 @@ public class Bullet : MonoBehaviour
             //Destroy(gameObject);
             if (amountPierced >= piercing)
             {
-                gameObject.SetActive(false); // FOR OUR GAMEOBJECT POOLIGN SYSTEM
+                bulletAnimator.SetTrigger("hit");
+                //gameObject.SetActive(false); // FOR OUR GAMEOBJECT POOLIGN SYSTEM
             }
         }
+        else if (hitInfo.tag.Equals("Shootable"))
+        {
+            Debug.Log(hitInfo.name + " was hit!");
+            amountPierced++;
+            if (amountPierced >= piercing)
+            {
+                bulletAnimator.SetTrigger("hit");
+                //gameObject.SetActive(false); // FOR OUR GAMEOBJECT POOLIGN SYSTEM
+            }
+        }
+    }
+
+    public void ReturnBulletToPool()
+    {
+        gameObject.SetActive(false);
     }
 }

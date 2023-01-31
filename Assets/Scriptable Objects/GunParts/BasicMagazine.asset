@@ -28,3 +28,5 @@ MonoBehaviour:
   isAuto: 0
   cost: 25
   randomCostRange: 13
+  piercingAmount: 0
+  sizeMultiplier: 1

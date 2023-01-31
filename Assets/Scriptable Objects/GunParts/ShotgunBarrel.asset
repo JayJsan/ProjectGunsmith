@@ -26,5 +26,7 @@ MonoBehaviour:
   reloadTime: 0
   numberOfBullets: 8
   isAuto: 0
-  cost: 131
+  cost: 211
   randomCostRange: 13
+  piercingAmount: 1
+  sizeMultiplier: 0

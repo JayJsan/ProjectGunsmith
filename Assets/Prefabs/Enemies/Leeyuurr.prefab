@@ -254,10 +254,10 @@ MonoBehaviour:
   bulletPool: {fileID: 0}
   enemyBulletHolder: {fileID: 0}
   bulletForce: 13.97
-  spreadAngle: 1
+  spreadAngle: 0.19
   damage: 1
   range: 10
-  fireRate: 0.179
+  fireRate: 0.92
   maxAmmo: 100
   currentAmmo: 10
   reloadTime: 5
