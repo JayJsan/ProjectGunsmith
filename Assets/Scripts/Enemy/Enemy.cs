@@ -18,10 +18,18 @@ public class Enemy : MonoBehaviour
     public int randomDamage = 0;
 
     public WaveSpawner waveSpawner;
+    public SpriteRenderer enemySpriteRenderer;
+    #region OnHitFlash
     public static InventoryManager inventoryManager;
+    private Shader shaderGUItext;
+    private Shader shaderSpritesDefault;
+    public int numberOfFlashes = 1;
+    public float flashDuration = 0.1f;
+    #endregion
 
     [Range(0, 1000)]
     public int randomGoldRange = 5;
+
 
     public Collider2D _collider;
     private void Awake()
@@ -29,6 +37,9 @@ public class Enemy : MonoBehaviour
         inventoryManager = GameObject.Find("Player").GetComponent<InventoryManager>();
         waveSpawner = GameObject.Find("GameManager").GetComponent<WaveSpawner>();
         _collider = GetComponent<Collider2D>();
+        enemySpriteRenderer = GetComponent<SpriteRenderer>();
+        shaderGUItext = Shader.Find("GUI/Text Shader");
+        shaderSpritesDefault = Shader.Find("Sprites/Default");
     }
 
     private void Start()
@@ -51,7 +62,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-
+        StartCoroutine(FlashCoroutine());
         if (health <= 0)
         {
             // InventoryManager playerInventory = GameObject.Find("Player").GetComponent<InventoryManager>();
@@ -70,6 +81,21 @@ public class Enemy : MonoBehaviour
             waveSpawner.SubtractEnemiesAlive(1);
         }
         Destroy(gameObject);
+    }
+
+    private IEnumerator FlashCoroutine()
+    {
+        int currentFlash = 0;
+        while (currentFlash < numberOfFlashes)
+        {
+            enemySpriteRenderer.material.shader = shaderGUItext;
+            enemySpriteRenderer.color = Color.white;
+            yield return new WaitForSeconds(flashDuration);
+            enemySpriteRenderer.material.shader = shaderSpritesDefault;
+            enemySpriteRenderer.color = Color.white;
+            yield return new WaitForSeconds(flashDuration);
+            currentFlash++;
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

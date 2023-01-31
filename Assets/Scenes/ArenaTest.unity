@@ -12212,6 +12212,9 @@ MonoBehaviour:
   randomDamageOn: 1
   randomDamage: 0
   waveSpawner: {fileID: 0}
+  enemySpriteRenderer: {fileID: 0}
+  numberOfFlashes: 1
+  flashDuration: 0.1
   randomGoldRange: 1000
   _collider: {fileID: 0}
 --- !u!114 &790398319241347313
