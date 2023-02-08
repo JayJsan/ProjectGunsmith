@@ -4044,7 +4044,7 @@ MonoBehaviour:
   flashColor: {r: 1, g: 0.6556604, b: 0.6556604, a: 1}
   playerColor: {r: 1, g: 1, b: 1, a: 1}
   heartColor: {r: 0.9339623, g: 0, b: 0, a: 1}
-  flashDuration: 0.15
+  flashDuration: 0.1
   numberOfFlashes: 1
   playerSprite: {fileID: 1548905229}
   healthSlider: {fileID: 996379764}

@@ -8,6 +8,7 @@ public class BulletDestroy : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        animator.gameObject.GetComponent<Collider2D>().enabled = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
